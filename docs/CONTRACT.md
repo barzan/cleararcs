@@ -1,0 +1,5 @@
+# Geometry contract
+
+Coordinates are points, top-left origin. Default text is 10 pt; v1 never shrinks text below 9 pt. Numeric comparisons use a fixed 0.01 pt epsilon, a 3 pt canvas clearance, 1.25 pt stroke width, and a 4.25 pt minimum parallel-shaft separation. A successful scene has finite boxes and orthogonal edge polylines. Endpoints must be distinct boundary attachments within the actual side span; the first shaft leaves along the source port normal and the last enters against the target port normal. Connector shafts must avoid unrelated boxes, arrowhead bases must remain outside the target box, and only proper transverse crossings are allowed. All geometry remains at least 3 pt inside the canvas. Labels, where supported, must avoid boxes and shafts. Failures return stable diagnostic codes; a successful result is a validated heuristic, not an optimality proof.
+
+ELK Layered (`elkjs` 0.12.0) supplies placement and orthogonal routes. No route repair engine is used. Inputs are bounded to 30 nodes and 60 edges.

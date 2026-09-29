@@ -1,0 +1,1313 @@
+{
+  "version": 1,
+  "source": {
+    "version": 1,
+    "direction": "AUTO",
+    "layoutGoal": "fit-page",
+    "page": {
+      "width": 1000,
+      "height": 800,
+      "margin": 30,
+      "minBodyFontSize": 9,
+      "orientation": "landscape",
+      "minStrokeWidth": 0.5
+    },
+    "theme": {
+      "visual": true,
+      "crossingBridges": true,
+      "colorMode": "semantic"
+    },
+    "nodes": [
+      {
+        "id": "instrument",
+        "title": "Field instrument",
+        "kind": "external",
+        "rows": [
+          {
+            "role": "shown",
+            "text": "Collect calibrated spectra"
+          }
+        ]
+      },
+      {
+        "id": "ingest",
+        "title": "Ingestion service",
+        "kind": "screen",
+        "rows": [
+          {
+            "role": "input",
+            "required": true,
+            "label": "Capture batch"
+          },
+          {
+            "role": "shown",
+            "text": "Validate timestamps"
+          }
+        ]
+      },
+      {
+        "id": "archive",
+        "title": "Reference archive",
+        "kind": "boundary",
+        "rows": [
+          {
+            "role": "shown",
+            "text": "Versioned raw observations"
+          }
+        ]
+      },
+      {
+        "id": "features",
+        "title": "Feature laboratory",
+        "kind": "screen",
+        "rows": [
+          {
+            "role": "condition",
+            "predicate": "Calibration passes",
+            "then": "Extract descriptors",
+            "thenRole": "cta"
+          },
+          {
+            "role": "rule",
+            "text": "Retain feature provenance"
+          }
+        ]
+      },
+      {
+        "id": "model",
+        "title": "Inference model",
+        "kind": "dialog",
+        "rows": [
+          {
+            "role": "shown",
+            "text": "Fit constrained response model"
+          },
+          {
+            "role": "cta",
+            "text": "Estimate parameters"
+          }
+        ]
+      },
+      {
+        "id": "figures",
+        "title": "Figure compiler",
+        "kind": "screen",
+        "rows": [
+          {
+            "role": "shown",
+            "text": "Compose paper-ready panels"
+          }
+        ]
+      },
+      {
+        "id": "paper",
+        "title": "Manuscript package",
+        "kind": "boundary",
+        "rows": [
+          {
+            "role": "shown",
+            "text": "Methods, figures, and appendix"
+          }
+        ]
+      }
+    ],
+    "edges": [
+      {
+        "id": "capture",
+        "source": "instrument",
+        "target": "ingest",
+        "label": "calibrated spectra",
+        "semanticClass": "primary"
+      },
+      {
+        "id": "preserve",
+        "source": "ingest",
+        "target": "archive",
+        "label": "raw observation record",
+        "semanticClass": "secondary"
+      },
+      {
+        "id": "transform",
+        "source": "ingest",
+        "target": "features",
+        "label": "normalized signal",
+        "semanticClass": "primary"
+      },
+      {
+        "id": "retrieve",
+        "source": "archive",
+        "target": "features",
+        "label": "reference baseline",
+        "style": "dashed",
+        "semanticClass": "optional"
+      },
+      {
+        "id": "estimate",
+        "source": "features",
+        "target": "model",
+        "label": "descriptor matrix",
+        "semanticClass": "primary"
+      },
+      {
+        "id": "plot",
+        "source": "model",
+        "target": "figures",
+        "label": "parameter estimates",
+        "semanticClass": "alert"
+      },
+      {
+        "id": "assemble",
+        "source": "figures",
+        "target": "paper",
+        "label": "verified figure set",
+        "semanticClass": "primary"
+      },
+      {
+        "id": "diagnose",
+        "source": "model",
+        "target": "features",
+        "label": "residual diagnostics",
+        "style": "dashed",
+        "semanticClass": "optional"
+      }
+    ]
+  },
+  "canvas": {
+    "x": 0,
+    "y": 0,
+    "width": 1013.5,
+    "height": 802
+  },
+  "nodes": [
+    {
+      "id": "instrument",
+      "title": "Field instrument",
+      "kind": "external",
+      "rows": [
+        {
+          "role": "shown",
+          "text": "Collect calibrated spectra"
+        }
+      ],
+      "canonicalNodeId": "instrument",
+      "displayTitle": "Field instrument",
+      "box": {
+        "x": 411,
+        "y": 22,
+        "width": 365,
+        "height": 70
+      },
+      "titleLines": [
+        "Field instrument"
+      ],
+      "titleBounds": {
+        "x": 425,
+        "y": 34,
+        "width": 323,
+        "height": 17
+      },
+      "resolvedRows": [
+        {
+          "role": "shown",
+          "text": "Collect calibrated spectra",
+          "renderedText": "Collect calibrated spectra",
+          "lines": [
+            "Collect calibrated spectra"
+          ],
+          "bounds": {
+            "x": 441,
+            "y": 64,
+            "width": 114.74000000000001,
+            "height": 14
+          }
+        }
+      ]
+    },
+    {
+      "id": "ingest",
+      "title": "Ingestion service",
+      "kind": "screen",
+      "rows": [
+        {
+          "role": "input",
+          "required": true,
+          "label": "Capture batch"
+        },
+        {
+          "role": "shown",
+          "text": "Validate timestamps"
+        }
+      ],
+      "canonicalNodeId": "ingest",
+      "displayTitle": "Ingestion service",
+      "box": {
+        "x": 411,
+        "y": 182,
+        "width": 365,
+        "height": 86
+      },
+      "titleLines": [
+        "Ingestion service"
+      ],
+      "titleBounds": {
+        "x": 425,
+        "y": 194,
+        "width": 323,
+        "height": 17
+      },
+      "resolvedRows": [
+        {
+          "role": "input",
+          "required": true,
+          "label": "Capture batch",
+          "renderedText": "* Capture batch",
+          "lines": [
+            "* Capture batch"
+          ],
+          "bounds": {
+            "x": 441,
+            "y": 224,
+            "width": 70.13,
+            "height": 14
+          }
+        },
+        {
+          "role": "shown",
+          "text": "Validate timestamps",
+          "renderedText": "Validate timestamps",
+          "lines": [
+            "Validate timestamps"
+          ],
+          "bounds": {
+            "x": 441,
+            "y": 240,
+            "width": 92.09,
+            "height": 14
+          }
+        }
+      ]
+    },
+    {
+      "id": "archive",
+      "title": "Reference archive",
+      "kind": "boundary",
+      "rows": [
+        {
+          "role": "shown",
+          "text": "Versioned raw observations"
+        }
+      ],
+      "canonicalNodeId": "archive",
+      "displayTitle": "Reference archive",
+      "box": {
+        "x": 22,
+        "y": 374,
+        "width": 365,
+        "height": 70
+      },
+      "titleLines": [
+        "Reference archive"
+      ],
+      "titleBounds": {
+        "x": 36,
+        "y": 386,
+        "width": 323,
+        "height": 17
+      },
+      "resolvedRows": [
+        {
+          "role": "shown",
+          "text": "Versioned raw observations",
+          "renderedText": "Versioned raw observations",
+          "lines": [
+            "Versioned raw observations"
+          ],
+          "bounds": {
+            "x": 52,
+            "y": 416,
+            "width": 124.09,
+            "height": 14
+          }
+        }
+      ]
+    },
+    {
+      "id": "features",
+      "title": "Feature laboratory",
+      "kind": "screen",
+      "rows": [
+        {
+          "role": "condition",
+          "predicate": "Calibration passes",
+          "then": "Extract descriptors",
+          "thenRole": "cta"
+        },
+        {
+          "role": "rule",
+          "text": "Retain feature provenance"
+        }
+      ],
+      "canonicalNodeId": "features",
+      "displayTitle": "Feature laboratory",
+      "box": {
+        "x": 82.83333333333333,
+        "y": 534,
+        "width": 365,
+        "height": 86
+      },
+      "titleLines": [
+        "Feature laboratory"
+      ],
+      "titleBounds": {
+        "x": 96.83333333333333,
+        "y": 546,
+        "width": 323,
+        "height": 17
+      },
+      "resolvedRows": [
+        {
+          "role": "condition",
+          "predicate": "Calibration passes",
+          "then": "Extract descriptors",
+          "thenRole": "cta",
+          "renderedText": "?(Calibration passes) → Extract descriptors",
+          "lines": [
+            "?(Calibration passes) → Extract descriptors"
+          ],
+          "bounds": {
+            "x": 112.83333333333333,
+            "y": 576,
+            "width": 191.75,
+            "height": 14
+          }
+        },
+        {
+          "role": "rule",
+          "text": "Retain feature provenance",
+          "renderedText": "Retain feature provenance",
+          "lines": [
+            "Retain feature provenance"
+          ],
+          "bounds": {
+            "x": 112.83333333333333,
+            "y": 592,
+            "width": 118.25,
+            "height": 14
+          }
+        }
+      ]
+    },
+    {
+      "id": "model",
+      "title": "Inference model",
+      "kind": "dialog",
+      "rows": [
+        {
+          "role": "shown",
+          "text": "Fit constrained response model"
+        },
+        {
+          "role": "cta",
+          "text": "Estimate parameters"
+        }
+      ],
+      "canonicalNodeId": "model",
+      "displayTitle": "Inference model",
+      "box": {
+        "x": 614.5,
+        "y": 358,
+        "width": 365,
+        "height": 86
+      },
+      "titleLines": [
+        "Inference model"
+      ],
+      "titleBounds": {
+        "x": 628.5,
+        "y": 370,
+        "width": 323,
+        "height": 17
+      },
+      "resolvedRows": [
+        {
+          "role": "shown",
+          "text": "Fit constrained response model",
+          "renderedText": "Fit constrained response model",
+          "lines": [
+            "Fit constrained response model"
+          ],
+          "bounds": {
+            "x": 644.5,
+            "y": 400,
+            "width": 141.44,
+            "height": 14
+          }
+        },
+        {
+          "role": "cta",
+          "text": "Estimate parameters",
+          "renderedText": "[Estimate parameters]",
+          "lines": [
+            "[Estimate parameters]"
+          ],
+          "bounds": {
+            "x": 644.5,
+            "y": 416,
+            "width": 100.19999999999999,
+            "height": 14
+          }
+        }
+      ]
+    },
+    {
+      "id": "figures",
+      "title": "Figure compiler",
+      "kind": "screen",
+      "rows": [
+        {
+          "role": "shown",
+          "text": "Compose paper-ready panels"
+        }
+      ],
+      "canonicalNodeId": "figures",
+      "displayTitle": "Figure compiler",
+      "box": {
+        "x": 614.5,
+        "y": 542,
+        "width": 365,
+        "height": 70
+      },
+      "titleLines": [
+        "Figure compiler"
+      ],
+      "titleBounds": {
+        "x": 628.5,
+        "y": 554,
+        "width": 323,
+        "height": 17
+      },
+      "resolvedRows": [
+        {
+          "role": "shown",
+          "text": "Compose paper-ready panels",
+          "renderedText": "Compose paper-ready panels",
+          "lines": [
+            "Compose paper-ready panels"
+          ],
+          "bounds": {
+            "x": 644.5,
+            "y": 584,
+            "width": 132.05,
+            "height": 14
+          }
+        }
+      ]
+    },
+    {
+      "id": "paper",
+      "title": "Manuscript package",
+      "kind": "boundary",
+      "rows": [
+        {
+          "role": "shown",
+          "text": "Methods, figures, and appendix"
+        }
+      ],
+      "canonicalNodeId": "paper",
+      "displayTitle": "Manuscript package",
+      "box": {
+        "x": 614.5,
+        "y": 710,
+        "width": 365,
+        "height": 70
+      },
+      "titleLines": [
+        "Manuscript package"
+      ],
+      "titleBounds": {
+        "x": 628.5,
+        "y": 722,
+        "width": 323,
+        "height": 17
+      },
+      "resolvedRows": [
+        {
+          "role": "shown",
+          "text": "Methods, figures, and appendix",
+          "renderedText": "Methods, figures, and appendix",
+          "lines": [
+            "Methods, figures, and appendix"
+          ],
+          "bounds": {
+            "x": 644.5,
+            "y": 752,
+            "width": 140.35999999999999,
+            "height": 14
+          }
+        }
+      ]
+    }
+  ],
+  "ports": [
+    {
+      "id": "capture:source",
+      "nodeId": "instrument",
+      "side": "SOUTH",
+      "point": {
+        "x": 593.5,
+        "y": 92
+      }
+    },
+    {
+      "id": "capture:target",
+      "nodeId": "ingest",
+      "side": "NORTH",
+      "point": {
+        "x": 593.5,
+        "y": 182
+      }
+    },
+    {
+      "id": "preserve:source",
+      "nodeId": "ingest",
+      "side": "WEST",
+      "point": {
+        "x": 411,
+        "y": 225
+      }
+    },
+    {
+      "id": "transform:source",
+      "nodeId": "ingest",
+      "side": "SOUTH",
+      "point": {
+        "x": 593.5,
+        "y": 268
+      }
+    },
+    {
+      "id": "preserve:target",
+      "nodeId": "archive",
+      "side": "EAST",
+      "point": {
+        "x": 387,
+        "y": 409
+      }
+    },
+    {
+      "id": "retrieve:source",
+      "nodeId": "archive",
+      "side": "SOUTH",
+      "point": {
+        "x": 204.5,
+        "y": 444
+      }
+    },
+    {
+      "id": "transform:target",
+      "nodeId": "features",
+      "side": "NORTH",
+      "point": {
+        "x": 326.17,
+        "y": 534
+      }
+    },
+    {
+      "id": "retrieve:target",
+      "nodeId": "features",
+      "side": "NORTH",
+      "point": {
+        "x": 204.5,
+        "y": 534
+      }
+    },
+    {
+      "id": "estimate:source",
+      "nodeId": "features",
+      "side": "SOUTH",
+      "point": {
+        "x": 265.33,
+        "y": 620
+      }
+    },
+    {
+      "id": "diagnose:target",
+      "nodeId": "features",
+      "side": "EAST",
+      "point": {
+        "x": 447.83,
+        "y": 577
+      }
+    },
+    {
+      "id": "estimate:target",
+      "nodeId": "model",
+      "side": "NORTH",
+      "point": {
+        "x": 797,
+        "y": 358
+      }
+    },
+    {
+      "id": "plot:source",
+      "nodeId": "model",
+      "side": "SOUTH",
+      "point": {
+        "x": 797,
+        "y": 444
+      }
+    },
+    {
+      "id": "diagnose:source",
+      "nodeId": "model",
+      "side": "WEST",
+      "point": {
+        "x": 614.5,
+        "y": 401
+      }
+    },
+    {
+      "id": "plot:target",
+      "nodeId": "figures",
+      "side": "NORTH",
+      "point": {
+        "x": 797,
+        "y": 542
+      }
+    },
+    {
+      "id": "assemble:source",
+      "nodeId": "figures",
+      "side": "SOUTH",
+      "point": {
+        "x": 797,
+        "y": 612
+      }
+    },
+    {
+      "id": "assemble:target",
+      "nodeId": "paper",
+      "side": "NORTH",
+      "point": {
+        "x": 797,
+        "y": 710
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "capture",
+      "source": "instrument",
+      "target": "ingest",
+      "label": "calibrated spectra",
+      "semanticClass": "primary",
+      "points": [
+        {
+          "x": 593.5,
+          "y": 92
+        },
+        {
+          "x": 593.5,
+          "y": 182
+        }
+      ],
+      "arrowhead": [
+        {
+          "x": 593.5,
+          "y": 182
+        },
+        {
+          "x": 596.5,
+          "y": 175
+        },
+        {
+          "x": 590.5,
+          "y": 175
+        }
+      ],
+      "labelBox": {
+        "x": 498.35,
+        "y": 96.5,
+        "width": 89.15,
+        "height": 18
+      },
+      "labelLines": [
+        "calibrated spectra"
+      ],
+      "labelAngle": 0,
+      "labelOwner": "capture",
+      "labelAnchor": {
+        "x": 593.5,
+        "y": 105.5
+      },
+      "leader": [
+        {
+          "x": 593.5,
+          "y": 105.5
+        },
+        {
+          "x": 587.5,
+          "y": 105.5
+        }
+      ]
+    },
+    {
+      "id": "preserve",
+      "source": "ingest",
+      "target": "archive",
+      "label": "raw observation record",
+      "semanticClass": "secondary",
+      "points": [
+        {
+          "x": 411,
+          "y": 225
+        },
+        {
+          "x": 399,
+          "y": 225
+        },
+        {
+          "x": 399,
+          "y": 409
+        },
+        {
+          "x": 387,
+          "y": 409
+        }
+      ],
+      "arrowhead": [
+        {
+          "x": 387,
+          "y": 409
+        },
+        {
+          "x": 394,
+          "y": 412
+        },
+        {
+          "x": 394,
+          "y": 406
+        }
+      ],
+      "labelBox": {
+        "x": 313.03,
+        "y": 219.2,
+        "width": 79.97,
+        "height": 30
+      },
+      "labelLines": [
+        "raw observation",
+        "record"
+      ],
+      "labelAngle": 0,
+      "labelOwner": "preserve",
+      "labelAnchor": {
+        "x": 399,
+        "y": 234.2
+      },
+      "leader": [
+        {
+          "x": 399,
+          "y": 234.2
+        },
+        {
+          "x": 393,
+          "y": 234.2
+        }
+      ]
+    },
+    {
+      "id": "transform",
+      "source": "ingest",
+      "target": "features",
+      "label": "normalized signal",
+      "semanticClass": "primary",
+      "points": [
+        {
+          "x": 593.5,
+          "y": 268
+        },
+        {
+          "x": 593.5,
+          "y": 401
+        },
+        {
+          "x": 593.5,
+          "y": 456
+        },
+        {
+          "x": 326.17,
+          "y": 456
+        },
+        {
+          "x": 326.17,
+          "y": 534
+        }
+      ],
+      "arrowhead": [
+        {
+          "x": 326.17,
+          "y": 534
+        },
+        {
+          "x": 329.17,
+          "y": 527
+        },
+        {
+          "x": 323.17,
+          "y": 527
+        }
+      ],
+      "labelBox": {
+        "x": 509.9905,
+        "y": 462,
+        "width": 86.82,
+        "height": 18
+      },
+      "labelLines": [
+        "normalized signal"
+      ],
+      "labelAngle": 0,
+      "labelOwner": "transform",
+      "labelAnchor": {
+        "x": 553.4005,
+        "y": 456
+      },
+      "leader": [
+        {
+          "x": 553.4005,
+          "y": 456
+        },
+        {
+          "x": 553.4005,
+          "y": 462
+        }
+      ]
+    },
+    {
+      "id": "retrieve",
+      "source": "archive",
+      "target": "features",
+      "label": "reference baseline",
+      "style": "dashed",
+      "semanticClass": "optional",
+      "points": [
+        {
+          "x": 204.5,
+          "y": 444
+        },
+        {
+          "x": 204.5,
+          "y": 534
+        }
+      ],
+      "arrowhead": [
+        {
+          "x": 204.5,
+          "y": 534
+        },
+        {
+          "x": 207.5,
+          "y": 527
+        },
+        {
+          "x": 201.5,
+          "y": 527
+        }
+      ],
+      "labelBox": {
+        "x": 107.2,
+        "y": 448.5,
+        "width": 91.3,
+        "height": 18
+      },
+      "labelLines": [
+        "reference baseline"
+      ],
+      "labelAngle": 0,
+      "labelOwner": "retrieve",
+      "labelAnchor": {
+        "x": 204.5,
+        "y": 457.5
+      },
+      "leader": [
+        {
+          "x": 204.5,
+          "y": 457.5
+        },
+        {
+          "x": 198.5,
+          "y": 457.5
+        }
+      ]
+    },
+    {
+      "id": "estimate",
+      "source": "features",
+      "target": "model",
+      "label": "descriptor matrix",
+      "semanticClass": "primary",
+      "points": [
+        {
+          "x": 265.33,
+          "y": 620
+        },
+        {
+          "x": 265.33,
+          "y": 632
+        },
+        {
+          "x": 991.5,
+          "y": 632
+        },
+        {
+          "x": 991.5,
+          "y": 577
+        },
+        {
+          "x": 991.5,
+          "y": 401
+        },
+        {
+          "x": 991.5,
+          "y": 280
+        },
+        {
+          "x": 797,
+          "y": 280
+        },
+        {
+          "x": 797,
+          "y": 358
+        }
+      ],
+      "arrowhead": [
+        {
+          "x": 797,
+          "y": 358
+        },
+        {
+          "x": 800,
+          "y": 351
+        },
+        {
+          "x": 794,
+          "y": 351
+        }
+      ],
+      "labelBox": {
+        "x": 259.1285,
+        "y": 638,
+        "width": 85.02,
+        "height": 18
+      },
+      "labelLines": [
+        "descriptor matrix"
+      ],
+      "labelAngle": 0,
+      "labelOwner": "estimate",
+      "labelAnchor": {
+        "x": 301.63849999999996,
+        "y": 632
+      },
+      "leader": [
+        {
+          "x": 301.63849999999996,
+          "y": 632
+        },
+        {
+          "x": 301.63849999999996,
+          "y": 638
+        }
+      ]
+    },
+    {
+      "id": "plot",
+      "source": "model",
+      "target": "figures",
+      "label": "parameter estimates",
+      "semanticClass": "alert",
+      "points": [
+        {
+          "x": 797,
+          "y": 444
+        },
+        {
+          "x": 797,
+          "y": 542
+        }
+      ],
+      "arrowhead": [
+        {
+          "x": 797,
+          "y": 542
+        },
+        {
+          "x": 800,
+          "y": 535
+        },
+        {
+          "x": 794,
+          "y": 535
+        }
+      ],
+      "labelBox": {
+        "x": 689.48,
+        "y": 449.7,
+        "width": 101.52000000000001,
+        "height": 18
+      },
+      "labelLines": [
+        "parameter estimates"
+      ],
+      "labelAngle": 0,
+      "labelOwner": "plot",
+      "labelAnchor": {
+        "x": 797,
+        "y": 458.7
+      },
+      "leader": [
+        {
+          "x": 797,
+          "y": 458.7
+        },
+        {
+          "x": 791,
+          "y": 458.7
+        }
+      ]
+    },
+    {
+      "id": "assemble",
+      "source": "figures",
+      "target": "paper",
+      "label": "verified figure set",
+      "semanticClass": "primary",
+      "points": [
+        {
+          "x": 797,
+          "y": 612
+        },
+        {
+          "x": 797,
+          "y": 710
+        }
+      ],
+      "arrowhead": [
+        {
+          "x": 797,
+          "y": 710
+        },
+        {
+          "x": 800,
+          "y": 703
+        },
+        {
+          "x": 794,
+          "y": 703
+        }
+      ],
+      "labelBox": {
+        "x": 705.25,
+        "y": 637.3,
+        "width": 85.75,
+        "height": 18
+      },
+      "labelLines": [
+        "verified figure set"
+      ],
+      "labelAngle": 0,
+      "labelOwner": "assemble",
+      "labelAnchor": {
+        "x": 797,
+        "y": 646.3
+      },
+      "leader": [
+        {
+          "x": 797,
+          "y": 646.3
+        },
+        {
+          "x": 791,
+          "y": 646.3
+        }
+      ]
+    },
+    {
+      "id": "diagnose",
+      "source": "model",
+      "target": "features",
+      "label": "residual diagnostics",
+      "style": "dashed",
+      "semanticClass": "optional",
+      "points": [
+        {
+          "x": 614.5,
+          "y": 401
+        },
+        {
+          "x": 602.5,
+          "y": 401
+        },
+        {
+          "x": 602.5,
+          "y": 577
+        },
+        {
+          "x": 447.83,
+          "y": 577
+        }
+      ],
+      "arrowhead": [
+        {
+          "x": 447.83,
+          "y": 577
+        },
+        {
+          "x": 454.83,
+          "y": 580
+        },
+        {
+          "x": 454.83,
+          "y": 574
+        }
+      ],
+      "labelBox": {
+        "x": 507.45400000000006,
+        "y": 583,
+        "width": 97.29,
+        "height": 18
+      },
+      "labelLines": [
+        "residual diagnostics"
+      ],
+      "labelAngle": 0,
+      "labelOwner": "diagnose",
+      "labelAnchor": {
+        "x": 556.099,
+        "y": 577
+      },
+      "leader": [
+        {
+          "x": 556.099,
+          "y": 577
+        },
+        {
+          "x": 556.099,
+          "y": 583
+        }
+      ]
+    }
+  ],
+  "continuations": [],
+  "legend": {
+    "roles": [
+      {
+        "role": "input",
+        "label": "Input",
+        "cue": "required inputs use an asterisk"
+      },
+      {
+        "role": "shown",
+        "label": "Shown",
+        "cue": "visible state"
+      },
+      {
+        "role": "condition",
+        "label": "Condition",
+        "cue": "When/then predicate"
+      },
+      {
+        "role": "cta",
+        "label": "Action",
+        "cue": "bracketed; disabled is named"
+      },
+      {
+        "role": "rule",
+        "label": "Rule",
+        "cue": "behavioral invariant"
+      },
+      {
+        "role": "note",
+        "label": "Note",
+        "cue": "supporting information"
+      },
+      {
+        "role": "warning",
+        "label": "Warning",
+        "cue": "warning text plus color"
+      },
+      {
+        "role": "defined",
+        "label": "Defined term",
+        "cue": "term label"
+      }
+    ],
+    "nodeKinds": [
+      "screen",
+      "dialog",
+      "boundary",
+      "external",
+      "reference",
+      "showcase"
+    ],
+    "edgeStyles": [
+      {
+        "id": "solid",
+        "label": "declared transition",
+        "style": "solid"
+      },
+      {
+        "id": "dashed",
+        "label": "automatic or optional transition",
+        "style": "dashed"
+      },
+      {
+        "id": "dotted",
+        "label": "through-node continuation",
+        "style": "dotted"
+      }
+    ]
+  },
+  "provenance": {
+    "engine": "elkjs 0.12.0",
+    "candidate": 3,
+    "profile": "fit-page-candidate-search"
+  },
+  "print": {
+    "target": {
+      "width": 1000,
+      "height": 800,
+      "margin": 30,
+      "minBodyFontSize": 9,
+      "orientation": "landscape",
+      "minStrokeWidth": 0.5
+    },
+    "transform": {
+      "width": 1000,
+      "height": 800,
+      "translateX": 30,
+      "translateY": 30,
+      "scale": 0.9226932668329177
+    },
+    "fitScale": 0.9226932668329177,
+    "effectiveBodyFontSize": 9.226932668329177,
+    "effectiveLabelFontSize": 9.226932668329177,
+    "effectiveMinStrokeWidth": 0.5997506234413965,
+    "minimumPage": {
+      "width": 972.15,
+      "height": 781.8000000000001
+    },
+    "nodeCount": 7,
+    "edgeCount": 8,
+    "labelCount": 8,
+    "constraints": [
+      "layout direction DOWN",
+      "compact spacing profile",
+      "body and labels at 10 pt; meaningful connector/annotation strokes include edge, continuation, node border, and label tether"
+    ],
+    "collisions": 0,
+    "sharedSegments": 0,
+    "crossings": 1
+  }
+}

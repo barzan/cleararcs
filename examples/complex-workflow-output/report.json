@@ -1,0 +1,41 @@
+{
+  "ok": true,
+  "diagnostics": [],
+  "crossings": 50,
+  "print": {
+    "target": {
+      "width": 3000,
+      "height": 1500,
+      "margin": 24,
+      "minBodyFontSize": 9,
+      "orientation": "landscape",
+      "minStrokeWidth": 0.5
+    },
+    "transform": {
+      "width": 3000,
+      "height": 1500,
+      "translateX": 24,
+      "translateY": 24,
+      "scale": 0.9491198456715698
+    },
+    "fitScale": 0.9491198456715698,
+    "effectiveBodyFontSize": 9.491198456715699,
+    "effectiveLabelFontSize": 9.491198456715699,
+    "effectiveMinStrokeWidth": 0.6169278996865204,
+    "minimumPage": {
+      "width": 2847.225,
+      "height": 1370.1000000000001
+    },
+    "nodeCount": 19,
+    "edgeCount": 36,
+    "labelCount": 36,
+    "constraints": [
+      "layout direction DOWN",
+      "compact spacing profile",
+      "body and labels at 10 pt; meaningful connector/annotation strokes include edge, continuation, node border, and label tether"
+    ],
+    "collisions": 0,
+    "sharedSegments": 0,
+    "crossings": 50
+  }
+}

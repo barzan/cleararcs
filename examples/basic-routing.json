@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "direction": "LR",
+  "nodes": [
+    {"id":"brief","title":"Research brief","body":"Question and scope"},
+    {"id":"methods","title":"Method design","body":"Choose measurement plan"},
+    {"id":"data","title":"Data preparation","body":"Normalize observations"},
+    {"id":"review","title":"Technical review","body":"Join evidence and method"},
+    {"id":"paper","title":"Paper draft","body":"Prepare figures and claims"}
+  ],
+  "edges": [
+    {"id":"plan-method","source":"brief","target":"methods","label":"design method"},
+    {"id":"plan-data","source":"brief","target":"data","label":"prepare data"},
+    {"id":"method-review","source":"methods","target":"review","label":"submit method"},
+    {"id":"data-review","source":"data","target":"review","label":"submit dataset"},
+    {"id":"review-paper","source":"review","target":"paper","label":"approve draft"}
+  ]
+}

@@ -1,0 +1,4880 @@
+{
+  "version": 1,
+  "source": {
+    "version": 1,
+    "direction": "AUTO",
+    "layoutGoal": "fit-page",
+    "page": {
+      "width": 3000,
+      "height": 1500,
+      "margin": 24,
+      "minBodyFontSize": 9,
+      "orientation": "landscape",
+      "minStrokeWidth": 0.5
+    },
+    "theme": {
+      "visual": true,
+      "crossingBridges": true,
+      "colorMode": "proximity",
+      "groupEdgesByAction": true,
+      "labelWidth": 104
+    },
+    "nodes": [
+      {
+        "id": "request",
+        "title": "Experiment request",
+        "kind": "screen",
+        "rows": [
+          {
+            "role": "input",
+            "required": true,
+            "label": "Research question"
+          },
+          {
+            "role": "cta",
+            "text": "Open study"
+          }
+        ]
+      },
+      {
+        "id": "scope",
+        "title": "Scope review",
+        "kind": "dialog",
+        "rows": [
+          {
+            "role": "shown",
+            "text": "Check novelty and resources"
+          },
+          {
+            "role": "condition",
+            "predicate": "Scope is feasible",
+            "then": "Approve plan",
+            "thenRole": "cta"
+          }
+        ]
+      },
+      {
+        "id": "protocol",
+        "title": "Protocol studio",
+        "kind": "screen",
+        "rows": [
+          {
+            "role": "shown",
+            "text": "Specify controls and sampling"
+          },
+          {
+            "role": "rule",
+            "text": "Every revision keeps an audit trail"
+          }
+        ]
+      },
+      {
+        "id": "registry",
+        "title": "Protocol registry",
+        "kind": "boundary",
+        "rows": [
+          {
+            "role": "shown",
+            "text": "Immutable protocol revision"
+          }
+        ]
+      },
+      {
+        "id": "sensor",
+        "title": "Sensor array",
+        "kind": "external",
+        "rows": [
+          {
+            "role": "shown",
+            "text": "Fictional coastal observatory"
+          }
+        ]
+      },
+      {
+        "id": "capture",
+        "title": "Capture gateway",
+        "kind": "screen",
+        "rows": [
+          {
+            "role": "shown",
+            "text": "Batch and timestamp readings"
+          }
+        ]
+      },
+      {
+        "id": "raw",
+        "title": "Raw archive",
+        "kind": "boundary",
+        "rows": [
+          {
+            "role": "shown",
+            "text": "Encrypted observation objects"
+          }
+        ]
+      },
+      {
+        "id": "clean",
+        "title": "Cleaning pipeline",
+        "kind": "screen",
+        "rows": [
+          {
+            "role": "condition",
+            "predicate": "Quality flags pass",
+            "then": "Normalize stream",
+            "thenRole": "cta"
+          },
+          {
+            "role": "warning",
+            "text": "Quarantine anomalous batches"
+          }
+        ]
+      },
+      {
+        "id": "catalog",
+        "title": "Feature catalog",
+        "kind": "screen",
+        "rows": [
+          {
+            "role": "shown",
+            "text": "Traceable derived variables"
+          }
+        ]
+      },
+      {
+        "id": "simulator",
+        "title": "Scenario simulator",
+        "kind": "dialog",
+        "rows": [
+          {
+            "role": "shown",
+            "text": "Generate synthetic controls"
+          },
+          {
+            "role": "cta",
+            "text": "Run scenario"
+          }
+        ]
+      },
+      {
+        "id": "model",
+        "title": "Model workshop",
+        "kind": "screen",
+        "rows": [
+          {
+            "role": "shown",
+            "text": "Fit constrained response families"
+          },
+          {
+            "role": "rule",
+            "text": "Compare against held-out controls"
+          }
+        ]
+      },
+      {
+        "id": "validation",
+        "title": "Validation bench",
+        "kind": "dialog",
+        "rows": [
+          {
+            "role": "input",
+            "required": true,
+            "label": "Acceptance threshold"
+          },
+          {
+            "role": "cta",
+            "text": "Validate candidate"
+          }
+        ]
+      },
+      {
+        "id": "review",
+        "title": "Evidence review",
+        "kind": "screen",
+        "rows": [
+          {
+            "role": "shown",
+            "text": "Inspect diagnostics and uncertainty"
+          }
+        ]
+      },
+      {
+        "id": "revision",
+        "title": "Revision queue",
+        "kind": "screen",
+        "rows": [
+          {
+            "role": "note",
+            "text": "Route feedback to the owning stage"
+          }
+        ]
+      },
+      {
+        "id": "figures",
+        "title": "Figure assembly",
+        "kind": "screen",
+        "rows": [
+          {
+            "role": "shown",
+            "text": "Generate annotated panels"
+          }
+        ]
+      },
+      {
+        "id": "appendix",
+        "title": "Appendix bundle",
+        "kind": "boundary",
+        "rows": [
+          {
+            "role": "shown",
+            "text": "Methods and provenance tables"
+          }
+        ]
+      },
+      {
+        "id": "paper",
+        "title": "Paper package",
+        "kind": "boundary",
+        "rows": [
+          {
+            "role": "shown",
+            "text": "Synthetic study report"
+          }
+        ]
+      },
+      {
+        "id": "public-ref",
+        "title": "Data portal",
+        "kind": "screen",
+        "presentation": "reference",
+        "canonicalNodeId": "public-data-portal",
+        "showcasePage": 2
+      },
+      {
+        "id": "archive-ref",
+        "title": "Archive details",
+        "kind": "screen",
+        "presentation": "reference",
+        "canonicalNodeId": "raw-archive-specification",
+        "showcasePage": 3
+      }
+    ],
+    "edges": [
+      {
+        "id": "open",
+        "source": "request",
+        "target": "scope",
+        "label": "submit research question",
+        "labelParts": {
+          "action": "Submit",
+          "predicates": [
+            "new study"
+          ]
+        }
+      },
+      {
+        "id": "approve",
+        "source": "scope",
+        "target": "protocol",
+        "label": "approve experimental scope",
+        "labelParts": {
+          "action": "Approve",
+          "predicates": [
+            "feasible"
+          ]
+        }
+      },
+      {
+        "id": "register",
+        "source": "protocol",
+        "target": "registry",
+        "label": "register immutable protocol revision",
+        "semanticClass": "secondary"
+      },
+      {
+        "id": "deploy",
+        "source": "protocol",
+        "target": "sensor",
+        "label": "deploy sampling configuration"
+      },
+      {
+        "id": "stream",
+        "source": "sensor",
+        "target": "capture",
+        "label": "stream calibrated observations"
+      },
+      {
+        "id": "store",
+        "source": "capture",
+        "target": "raw",
+        "label": "store raw observation objects",
+        "semanticClass": "secondary"
+      },
+      {
+        "id": "clean-input",
+        "source": "capture",
+        "target": "clean",
+        "label": "route timestamped observation batch"
+      },
+      {
+        "id": "baseline",
+        "source": "registry",
+        "target": "clean",
+        "label": "retrieve protocol baseline",
+        "style": "dashed",
+        "semanticClass": "optional"
+      },
+      {
+        "id": "derive",
+        "source": "clean",
+        "target": "catalog",
+        "label": "derive quality-controlled features"
+      },
+      {
+        "id": "simulate",
+        "source": "catalog",
+        "target": "simulator",
+        "label": "seed synthetic control scenarios"
+      },
+      {
+        "id": "fit",
+        "source": "catalog",
+        "target": "model",
+        "label": "provide descriptor matrix for constrained fitting"
+      },
+      {
+        "id": "controls",
+        "source": "simulator",
+        "target": "model",
+        "label": "supply counterfactual control ensemble",
+        "semanticClass": "secondary"
+      },
+      {
+        "id": "validate",
+        "source": "model",
+        "target": "validation",
+        "label": "submit candidate model and uncertainty envelope"
+      },
+      {
+        "id": "inspect",
+        "source": "validation",
+        "target": "review",
+        "label": "review validation diagnostics"
+      },
+      {
+        "id": "revise-model",
+        "source": "review",
+        "target": "revision",
+        "label": "request model revision",
+        "style": "dashed",
+        "semanticClass": "optional"
+      },
+      {
+        "id": "revise-protocol",
+        "source": "revision",
+        "target": "protocol",
+        "label": "return protocol clarification",
+        "style": "dashed",
+        "semanticClass": "optional"
+      },
+      {
+        "id": "refit",
+        "source": "revision",
+        "target": "model",
+        "label": "return model calibration note",
+        "style": "dashed",
+        "semanticClass": "optional"
+      },
+      {
+        "id": "compose",
+        "source": "review",
+        "target": "figures",
+        "label": "compose evidence figure panels"
+      },
+      {
+        "id": "append",
+        "source": "figures",
+        "target": "appendix",
+        "label": "attach provenance appendix"
+      },
+      {
+        "id": "publish",
+        "source": "figures",
+        "target": "paper",
+        "label": "assemble publication-ready results"
+      },
+      {
+        "id": "methods",
+        "source": "appendix",
+        "target": "paper",
+        "label": "include reproducible methods record",
+        "semanticClass": "secondary"
+      },
+      {
+        "id": "portal",
+        "source": "paper",
+        "target": "public-ref",
+        "label": "publish synthetic dataset metadata"
+      },
+      {
+        "id": "archive-link",
+        "source": "raw",
+        "target": "archive-ref",
+        "label": "link retained raw archive metadata",
+        "semanticClass": "secondary"
+      },
+      {
+        "id": "feedback-data",
+        "source": "review",
+        "target": "clean",
+        "label": "send anomaly feedback to cleaning pipeline",
+        "style": "dashed",
+        "semanticClass": "alert"
+      },
+      {
+        "id": "feedback-capture",
+        "source": "clean",
+        "target": "capture",
+        "label": "request recapture for flagged measurements",
+        "style": "dashed",
+        "semanticClass": "alert"
+      },
+      {
+        "id": "cross-a",
+        "source": "scope",
+        "target": "validation",
+        "label": "carry approved acceptance criteria",
+        "semanticClass": "secondary"
+      },
+      {
+        "id": "cross-b",
+        "source": "raw",
+        "target": "review",
+        "label": "compare archive completeness during review",
+        "semanticClass": "secondary"
+      },
+      {
+        "id": "cross-c",
+        "source": "registry",
+        "target": "appendix",
+        "label": "cite registered protocol identifier",
+        "semanticClass": "secondary"
+      },
+      {
+        "id": "cross-d",
+        "source": "simulator",
+        "target": "figures",
+        "label": "annotate simulated control envelope",
+        "semanticClass": "secondary"
+      },
+      {
+        "id": "cross-e",
+        "source": "catalog",
+        "target": "appendix",
+        "label": "summarize feature lineage",
+        "semanticClass": "secondary"
+      },
+      {
+        "id": "cross-f",
+        "source": "sensor",
+        "target": "public-ref",
+        "label": "describe instrument channel availability",
+        "semanticClass": "secondary"
+      },
+      {
+        "id": "cross-g",
+        "source": "request",
+        "target": "revision",
+        "label": "preserve original question when revisions occur",
+        "semanticClass": "secondary"
+      },
+      {
+        "id": "cross-h",
+        "source": "validation",
+        "target": "paper",
+        "label": "record acceptance decision",
+        "semanticClass": "secondary"
+      },
+      {
+        "id": "cross-i",
+        "source": "raw",
+        "target": "model",
+        "label": "audit raw sample traceability",
+        "style": "dashed",
+        "semanticClass": "optional"
+      },
+      {
+        "id": "cross-j",
+        "source": "protocol",
+        "target": "appendix",
+        "label": "supply parameter definitions",
+        "semanticClass": "secondary"
+      },
+      {
+        "id": "cross-k",
+        "source": "clean",
+        "target": "figures",
+        "label": "report exclusion counts",
+        "semanticClass": "secondary"
+      }
+    ],
+    "continuations": [
+      {
+        "incomingEdge": "approve",
+        "outgoingEdge": "register",
+        "throughNode": "protocol"
+      },
+      {
+        "incomingEdge": "revise-protocol",
+        "outgoingEdge": "register",
+        "throughNode": "protocol"
+      }
+    ]
+  },
+  "canvas": {
+    "x": 0,
+    "y": 0,
+    "width": 3110.25,
+    "height": 1469
+  },
+  "nodes": [
+    {
+      "id": "request",
+      "title": "Experiment request",
+      "kind": "screen",
+      "rows": [
+        {
+          "role": "input",
+          "required": true,
+          "label": "Research question"
+        },
+        {
+          "role": "cta",
+          "text": "Open study"
+        }
+      ],
+      "canonicalNodeId": "request",
+      "displayTitle": "Experiment request",
+      "box": {
+        "x": 2636.4166666666665,
+        "y": 22,
+        "width": 365,
+        "height": 86
+      },
+      "titleLines": [
+        "Experiment request"
+      ],
+      "titleBounds": {
+        "x": 2650.4166666666665,
+        "y": 34,
+        "width": 323,
+        "height": 17
+      },
+      "resolvedRows": [
+        {
+          "role": "input",
+          "required": true,
+          "label": "Research question",
+          "renderedText": "* Research question",
+          "lines": [
+            "* Research question"
+          ],
+          "bounds": {
+            "x": 2666.4166666666665,
+            "y": 64,
+            "width": 90.05000000000001,
+            "height": 14
+          }
+        },
+        {
+          "role": "cta",
+          "text": "Open study",
+          "renderedText": "[Open study]",
+          "lines": [
+            "[Open study]"
+          ],
+          "bounds": {
+            "x": 2666.4166666666665,
+            "y": 80,
+            "width": 57.53,
+            "height": 14
+          }
+        }
+      ]
+    },
+    {
+      "id": "scope",
+      "title": "Scope review",
+      "kind": "dialog",
+      "rows": [
+        {
+          "role": "shown",
+          "text": "Check novelty and resources"
+        },
+        {
+          "role": "condition",
+          "predicate": "Scope is feasible",
+          "then": "Approve plan",
+          "thenRole": "cta"
+        }
+      ],
+      "canonicalNodeId": "scope",
+      "displayTitle": "Scope review",
+      "box": {
+        "x": 2247.416666666667,
+        "y": 198,
+        "width": 365,
+        "height": 86
+      },
+      "titleLines": [
+        "Scope review"
+      ],
+      "titleBounds": {
+        "x": 2261.416666666667,
+        "y": 210,
+        "width": 323,
+        "height": 17
+      },
+      "resolvedRows": [
+        {
+          "role": "shown",
+          "text": "Check novelty and resources",
+          "renderedText": "Check novelty and resources",
+          "lines": [
+            "Check novelty and resources"
+          ],
+          "bounds": {
+            "x": 2277.416666666667,
+            "y": 240,
+            "width": 128.49,
+            "height": 14
+          }
+        },
+        {
+          "role": "condition",
+          "predicate": "Scope is feasible",
+          "then": "Approve plan",
+          "thenRole": "cta",
+          "renderedText": "?(Scope is feasible) → Approve plan",
+          "lines": [
+            "?(Scope is feasible) → Approve plan"
+          ],
+          "bounds": {
+            "x": 2277.416666666667,
+            "y": 256,
+            "width": 158.94,
+            "height": 14
+          }
+        }
+      ]
+    },
+    {
+      "id": "protocol",
+      "title": "Protocol studio",
+      "kind": "screen",
+      "rows": [
+        {
+          "role": "shown",
+          "text": "Specify controls and sampling"
+        },
+        {
+          "role": "rule",
+          "text": "Every revision keeps an audit trail"
+        }
+      ],
+      "canonicalNodeId": "protocol",
+      "displayTitle": "Protocol studio",
+      "box": {
+        "x": 625.916666666667,
+        "y": 374,
+        "width": 389,
+        "height": 86
+      },
+      "titleLines": [
+        "Protocol studio"
+      ],
+      "titleBounds": {
+        "x": 639.916666666667,
+        "y": 386,
+        "width": 323,
+        "height": 17
+      },
+      "resolvedRows": [
+        {
+          "role": "shown",
+          "text": "Specify controls and sampling",
+          "renderedText": "Specify controls and sampling",
+          "lines": [
+            "Specify controls and sampling"
+          ],
+          "bounds": {
+            "x": 655.916666666667,
+            "y": 416,
+            "width": 134.35,
+            "height": 14
+          }
+        },
+        {
+          "role": "rule",
+          "text": "Every revision keeps an audit trail",
+          "renderedText": "Every revision keeps an audit trail",
+          "lines": [
+            "Every revision keeps an audit trail"
+          ],
+          "bounds": {
+            "x": 655.916666666667,
+            "y": 432,
+            "width": 150.12,
+            "height": 14
+          }
+        }
+      ]
+    },
+    {
+      "id": "registry",
+      "title": "Protocol registry",
+      "kind": "boundary",
+      "rows": [
+        {
+          "role": "shown",
+          "text": "Immutable protocol revision"
+        }
+      ],
+      "canonicalNodeId": "registry",
+      "displayTitle": "Protocol registry",
+      "box": {
+        "x": 832.416666666667,
+        "y": 550,
+        "width": 365,
+        "height": 70
+      },
+      "titleLines": [
+        "Protocol registry"
+      ],
+      "titleBounds": {
+        "x": 846.416666666667,
+        "y": 562,
+        "width": 323,
+        "height": 17
+      },
+      "resolvedRows": [
+        {
+          "role": "shown",
+          "text": "Immutable protocol revision",
+          "renderedText": "Immutable protocol revision",
+          "lines": [
+            "Immutable protocol revision"
+          ],
+          "bounds": {
+            "x": 862.416666666667,
+            "y": 592,
+            "width": 127.2,
+            "height": 14
+          }
+        }
+      ]
+    },
+    {
+      "id": "sensor",
+      "title": "Sensor array",
+      "kind": "external",
+      "rows": [
+        {
+          "role": "shown",
+          "text": "Fictional coastal observatory"
+        }
+      ],
+      "canonicalNodeId": "sensor",
+      "displayTitle": "Sensor array",
+      "box": {
+        "x": 52,
+        "y": 726,
+        "width": 365,
+        "height": 70
+      },
+      "titleLines": [
+        "Sensor array"
+      ],
+      "titleBounds": {
+        "x": 66,
+        "y": 738,
+        "width": 323,
+        "height": 17
+      },
+      "resolvedRows": [
+        {
+          "role": "shown",
+          "text": "Fictional coastal observatory",
+          "renderedText": "Fictional coastal observatory",
+          "lines": [
+            "Fictional coastal observatory"
+          ],
+          "bounds": {
+            "x": 82,
+            "y": 768,
+            "width": 129,
+            "height": 14
+          }
+        }
+      ]
+    },
+    {
+      "id": "capture",
+      "title": "Capture gateway",
+      "kind": "screen",
+      "rows": [
+        {
+          "role": "shown",
+          "text": "Batch and timestamp readings"
+        }
+      ],
+      "canonicalNodeId": "capture",
+      "displayTitle": "Capture gateway",
+      "box": {
+        "x": 573.0833333333335,
+        "y": 886,
+        "width": 365,
+        "height": 70
+      },
+      "titleLines": [
+        "Capture gateway"
+      ],
+      "titleBounds": {
+        "x": 587.0833333333335,
+        "y": 898,
+        "width": 323,
+        "height": 17
+      },
+      "resolvedRows": [
+        {
+          "role": "shown",
+          "text": "Batch and timestamp readings",
+          "renderedText": "Batch and timestamp readings",
+          "lines": [
+            "Batch and timestamp readings"
+          ],
+          "bounds": {
+            "x": 603.0833333333335,
+            "y": 928,
+            "width": 136.94,
+            "height": 14
+          }
+        }
+      ]
+    },
+    {
+      "id": "raw",
+      "title": "Raw archive",
+      "kind": "boundary",
+      "rows": [
+        {
+          "role": "shown",
+          "text": "Encrypted observation objects"
+        }
+      ],
+      "canonicalNodeId": "raw",
+      "displayTitle": "Raw archive",
+      "box": {
+        "x": 2389.0833333333335,
+        "y": 390,
+        "width": 365,
+        "height": 70
+      },
+      "titleLines": [
+        "Raw archive"
+      ],
+      "titleBounds": {
+        "x": 2403.0833333333335,
+        "y": 402,
+        "width": 323,
+        "height": 17
+      },
+      "resolvedRows": [
+        {
+          "role": "shown",
+          "text": "Encrypted observation objects",
+          "renderedText": "Encrypted observation objects",
+          "lines": [
+            "Encrypted observation objects"
+          ],
+          "bounds": {
+            "x": 2419.0833333333335,
+            "y": 432,
+            "width": 136.31,
+            "height": 14
+          }
+        }
+      ]
+    },
+    {
+      "id": "clean",
+      "title": "Cleaning pipeline",
+      "kind": "screen",
+      "rows": [
+        {
+          "role": "condition",
+          "predicate": "Quality flags pass",
+          "then": "Normalize stream",
+          "thenRole": "cta"
+        },
+        {
+          "role": "warning",
+          "text": "Quarantine anomalous batches"
+        }
+      ],
+      "canonicalNodeId": "clean",
+      "displayTitle": "Cleaning pipeline",
+      "box": {
+        "x": 441,
+        "y": 710,
+        "width": 365,
+        "height": 86
+      },
+      "titleLines": [
+        "Cleaning pipeline"
+      ],
+      "titleBounds": {
+        "x": 455,
+        "y": 722,
+        "width": 323,
+        "height": 17
+      },
+      "resolvedRows": [
+        {
+          "role": "condition",
+          "predicate": "Quality flags pass",
+          "then": "Normalize stream",
+          "thenRole": "cta",
+          "renderedText": "?(Quality flags pass) → Normalize stream",
+          "lines": [
+            "?(Quality flags pass) → Normalize stream"
+          ],
+          "bounds": {
+            "x": 471,
+            "y": 752,
+            "width": 182.71,
+            "height": 14
+          }
+        },
+        {
+          "role": "warning",
+          "text": "Quarantine anomalous batches",
+          "renderedText": "Quarantine anomalous batches",
+          "lines": [
+            "Quarantine anomalous batches"
+          ],
+          "bounds": {
+            "x": 471,
+            "y": 768,
+            "width": 139.89000000000001,
+            "height": 14
+          }
+        }
+      ]
+    },
+    {
+      "id": "catalog",
+      "title": "Feature catalog",
+      "kind": "screen",
+      "rows": [
+        {
+          "role": "shown",
+          "text": "Traceable derived variables"
+        }
+      ],
+      "canonicalNodeId": "catalog",
+      "displayTitle": "Feature catalog",
+      "box": {
+        "x": 1473.4166666666667,
+        "y": 550,
+        "width": 365,
+        "height": 70
+      },
+      "titleLines": [
+        "Feature catalog"
+      ],
+      "titleBounds": {
+        "x": 1487.4166666666667,
+        "y": 562,
+        "width": 323,
+        "height": 17
+      },
+      "resolvedRows": [
+        {
+          "role": "shown",
+          "text": "Traceable derived variables",
+          "renderedText": "Traceable derived variables",
+          "lines": [
+            "Traceable derived variables"
+          ],
+          "bounds": {
+            "x": 1503.4166666666667,
+            "y": 592,
+            "width": 122.92,
+            "height": 14
+          }
+        }
+      ]
+    },
+    {
+      "id": "simulator",
+      "title": "Scenario simulator",
+      "kind": "dialog",
+      "rows": [
+        {
+          "role": "shown",
+          "text": "Generate synthetic controls"
+        },
+        {
+          "role": "cta",
+          "text": "Run scenario"
+        }
+      ],
+      "canonicalNodeId": "simulator",
+      "displayTitle": "Scenario simulator",
+      "box": {
+        "x": 1526.25,
+        "y": 710,
+        "width": 365,
+        "height": 86
+      },
+      "titleLines": [
+        "Scenario simulator"
+      ],
+      "titleBounds": {
+        "x": 1540.25,
+        "y": 722,
+        "width": 323,
+        "height": 17
+      },
+      "resolvedRows": [
+        {
+          "role": "shown",
+          "text": "Generate synthetic controls",
+          "renderedText": "Generate synthetic controls",
+          "lines": [
+            "Generate synthetic controls"
+          ],
+          "bounds": {
+            "x": 1556.25,
+            "y": 752,
+            "width": 123.91,
+            "height": 14
+          }
+        },
+        {
+          "role": "cta",
+          "text": "Run scenario",
+          "renderedText": "[Run scenario]",
+          "lines": [
+            "[Run scenario]"
+          ],
+          "bounds": {
+            "x": 1556.25,
+            "y": 768,
+            "width": 64.58,
+            "height": 14
+          }
+        }
+      ]
+    },
+    {
+      "id": "model",
+      "title": "Model workshop",
+      "kind": "screen",
+      "rows": [
+        {
+          "role": "shown",
+          "text": "Fit constrained response families"
+        },
+        {
+          "role": "rule",
+          "text": "Compare against held-out controls"
+        }
+      ],
+      "canonicalNodeId": "model",
+      "displayTitle": "Model workshop",
+      "box": {
+        "x": 2312.25,
+        "y": 886,
+        "width": 365,
+        "height": 86
+      },
+      "titleLines": [
+        "Model workshop"
+      ],
+      "titleBounds": {
+        "x": 2326.25,
+        "y": 898,
+        "width": 323,
+        "height": 17
+      },
+      "resolvedRows": [
+        {
+          "role": "shown",
+          "text": "Fit constrained response families",
+          "renderedText": "Fit constrained response families",
+          "lines": [
+            "Fit constrained response families"
+          ],
+          "bounds": {
+            "x": 2342.25,
+            "y": 928,
+            "width": 148.49,
+            "height": 14
+          }
+        },
+        {
+          "role": "rule",
+          "text": "Compare against held-out controls",
+          "renderedText": "Compare against held-out controls",
+          "lines": [
+            "Compare against held-out controls"
+          ],
+          "bounds": {
+            "x": 2342.25,
+            "y": 944,
+            "width": 155.43,
+            "height": 14
+          }
+        }
+      ]
+    },
+    {
+      "id": "validation",
+      "title": "Validation bench",
+      "kind": "dialog",
+      "rows": [
+        {
+          "role": "input",
+          "required": true,
+          "label": "Acceptance threshold"
+        },
+        {
+          "role": "cta",
+          "text": "Validate candidate"
+        }
+      ],
+      "canonicalNodeId": "validation",
+      "displayTitle": "Validation bench",
+      "box": {
+        "x": 1923.25,
+        "y": 1062,
+        "width": 365,
+        "height": 86
+      },
+      "titleLines": [
+        "Validation bench"
+      ],
+      "titleBounds": {
+        "x": 1937.25,
+        "y": 1074,
+        "width": 323,
+        "height": 17
+      },
+      "resolvedRows": [
+        {
+          "role": "input",
+          "required": true,
+          "label": "Acceptance threshold",
+          "renderedText": "* Acceptance threshold",
+          "lines": [
+            "* Acceptance threshold"
+          ],
+          "bounds": {
+            "x": 1953.25,
+            "y": 1104,
+            "width": 104.76,
+            "height": 14
+          }
+        },
+        {
+          "role": "cta",
+          "text": "Validate candidate",
+          "renderedText": "[Validate candidate]",
+          "lines": [
+            "[Validate candidate]"
+          ],
+          "bounds": {
+            "x": 1953.25,
+            "y": 1120,
+            "width": 89.60000000000001,
+            "height": 14
+          }
+        }
+      ]
+    },
+    {
+      "id": "review",
+      "title": "Evidence review",
+      "kind": "screen",
+      "rows": [
+        {
+          "role": "shown",
+          "text": "Inspect diagnostics and uncertainty"
+        }
+      ],
+      "canonicalNodeId": "review",
+      "displayTitle": "Evidence review",
+      "box": {
+        "x": 2441.916666666667,
+        "y": 550,
+        "width": 365,
+        "height": 70
+      },
+      "titleLines": [
+        "Evidence review"
+      ],
+      "titleBounds": {
+        "x": 2455.916666666667,
+        "y": 562,
+        "width": 323,
+        "height": 17
+      },
+      "resolvedRows": [
+        {
+          "role": "shown",
+          "text": "Inspect diagnostics and uncertainty",
+          "renderedText": "Inspect diagnostics and uncertainty",
+          "lines": [
+            "Inspect diagnostics and uncertainty"
+          ],
+          "bounds": {
+            "x": 2471.916666666667,
+            "y": 592,
+            "width": 160.25,
+            "height": 14
+          }
+        }
+      ]
+    },
+    {
+      "id": "revision",
+      "title": "Revision queue",
+      "kind": "screen",
+      "rows": [
+        {
+          "role": "note",
+          "text": "Route feedback to the owning stage"
+        }
+      ],
+      "canonicalNodeId": "revision",
+      "displayTitle": "Revision queue",
+      "box": {
+        "x": 2701.25,
+        "y": 710,
+        "width": 365,
+        "height": 70
+      },
+      "titleLines": [
+        "Revision queue"
+      ],
+      "titleBounds": {
+        "x": 2715.25,
+        "y": 722,
+        "width": 323,
+        "height": 17
+      },
+      "resolvedRows": [
+        {
+          "role": "note",
+          "text": "Route feedback to the owning stage",
+          "renderedText": "Route feedback to the owning stage",
+          "lines": [
+            "Route feedback to the owning stage"
+          ],
+          "bounds": {
+            "x": 2731.25,
+            "y": 752,
+            "width": 160.19,
+            "height": 14
+          }
+        }
+      ]
+    },
+    {
+      "id": "figures",
+      "title": "Figure assembly",
+      "kind": "screen",
+      "rows": [
+        {
+          "role": "shown",
+          "text": "Generate annotated panels"
+        }
+      ],
+      "canonicalNodeId": "figures",
+      "displayTitle": "Figure assembly",
+      "box": {
+        "x": 1526.25,
+        "y": 886,
+        "width": 365,
+        "height": 70
+      },
+      "titleLines": [
+        "Figure assembly"
+      ],
+      "titleBounds": {
+        "x": 1540.25,
+        "y": 898,
+        "width": 323,
+        "height": 17
+      },
+      "resolvedRows": [
+        {
+          "role": "shown",
+          "text": "Generate annotated panels",
+          "renderedText": "Generate annotated panels",
+          "lines": [
+            "Generate annotated panels"
+          ],
+          "bounds": {
+            "x": 1556.25,
+            "y": 928,
+            "width": 122.07000000000001,
+            "height": 14
+          }
+        }
+      ]
+    },
+    {
+      "id": "appendix",
+      "title": "Appendix bundle",
+      "kind": "boundary",
+      "rows": [
+        {
+          "role": "shown",
+          "text": "Methods and provenance tables"
+        }
+      ],
+      "canonicalNodeId": "appendix",
+      "displayTitle": "Appendix bundle",
+      "box": {
+        "x": 706.7500000000005,
+        "y": 1067.3333333333333,
+        "width": 365,
+        "height": 70
+      },
+      "titleLines": [
+        "Appendix bundle"
+      ],
+      "titleBounds": {
+        "x": 720.7500000000005,
+        "y": 1079.3333333333333,
+        "width": 323,
+        "height": 17
+      },
+      "resolvedRows": [
+        {
+          "role": "shown",
+          "text": "Methods and provenance tables",
+          "renderedText": "Methods and provenance tables",
+          "lines": [
+            "Methods and provenance tables"
+          ],
+          "bounds": {
+            "x": 736.7500000000005,
+            "y": 1109.3333333333333,
+            "width": 143.13,
+            "height": 14
+          }
+        }
+      ]
+    },
+    {
+      "id": "paper",
+      "title": "Paper package",
+      "kind": "boundary",
+      "rows": [
+        {
+          "role": "shown",
+          "text": "Synthetic study report"
+        }
+      ],
+      "canonicalNodeId": "paper",
+      "displayTitle": "Paper package",
+      "box": {
+        "x": 706.7500000000005,
+        "y": 1238,
+        "width": 365,
+        "height": 70
+      },
+      "titleLines": [
+        "Paper package"
+      ],
+      "titleBounds": {
+        "x": 720.7500000000005,
+        "y": 1250,
+        "width": 323,
+        "height": 17
+      },
+      "resolvedRows": [
+        {
+          "role": "shown",
+          "text": "Synthetic study report",
+          "renderedText": "Synthetic study report",
+          "lines": [
+            "Synthetic study report"
+          ],
+          "bounds": {
+            "x": 736.7500000000005,
+            "y": 1280,
+            "width": 99.42999999999999,
+            "height": 14
+          }
+        }
+      ]
+    },
+    {
+      "id": "public-ref",
+      "title": "Data portal",
+      "kind": "screen",
+      "presentation": "reference",
+      "canonicalNodeId": "public-data-portal",
+      "showcasePage": 2,
+      "displayTitle": "Data portal",
+      "box": {
+        "x": 742.5833333333335,
+        "y": 1398,
+        "width": 220,
+        "height": 49
+      },
+      "titleLines": [
+        "Data portal"
+      ],
+      "titleBounds": {
+        "x": 752.5833333333335,
+        "y": 1407,
+        "width": 200,
+        "height": 13
+      },
+      "resolvedRows": []
+    },
+    {
+      "id": "archive-ref",
+      "title": "Archive details",
+      "kind": "screen",
+      "presentation": "reference",
+      "canonicalNodeId": "raw-archive-specification",
+      "showcasePage": 3,
+      "displayTitle": "Archive details",
+      "box": {
+        "x": 1221.4166666666667,
+        "y": 560.5,
+        "width": 220,
+        "height": 49
+      },
+      "titleLines": [
+        "Archive details"
+      ],
+      "titleBounds": {
+        "x": 1231.4166666666667,
+        "y": 569.5,
+        "width": 200,
+        "height": 13
+      },
+      "resolvedRows": []
+    }
+  ],
+  "ports": [
+    {
+      "id": "open:source",
+      "nodeId": "request",
+      "side": "WEST",
+      "point": {
+        "x": 2636.42,
+        "y": 65
+      }
+    },
+    {
+      "id": "cross-g:source",
+      "nodeId": "request",
+      "side": "SOUTH",
+      "point": {
+        "x": 2818.92,
+        "y": 108
+      }
+    },
+    {
+      "id": "open:target",
+      "nodeId": "scope",
+      "side": "EAST",
+      "point": {
+        "x": 2612.42,
+        "y": 241
+      }
+    },
+    {
+      "id": "approve:source",
+      "nodeId": "scope",
+      "side": "WEST",
+      "point": {
+        "x": 2247.42,
+        "y": 241
+      }
+    },
+    {
+      "id": "cross-a:source",
+      "nodeId": "scope",
+      "side": "SOUTH",
+      "point": {
+        "x": 2429.92,
+        "y": 284
+      }
+    },
+    {
+      "id": "approve:target",
+      "nodeId": "protocol",
+      "side": "NORTH",
+      "point": {
+        "x": 1002.92,
+        "y": 374
+      }
+    },
+    {
+      "id": "register:source",
+      "nodeId": "protocol",
+      "side": "SOUTH",
+      "point": {
+        "x": 1002.92,
+        "y": 460
+      }
+    },
+    {
+      "id": "deploy:source",
+      "nodeId": "protocol",
+      "side": "WEST",
+      "point": {
+        "x": 625.92,
+        "y": 417
+      }
+    },
+    {
+      "id": "revise-protocol:target",
+      "nodeId": "protocol",
+      "side": "NORTH",
+      "point": {
+        "x": 993.92,
+        "y": 374
+      }
+    },
+    {
+      "id": "cross-j:source",
+      "nodeId": "protocol",
+      "side": "SOUTH",
+      "point": {
+        "x": 799.42,
+        "y": 460
+      }
+    },
+    {
+      "id": "cross-c:source",
+      "nodeId": "registry",
+      "side": "SOUTH",
+      "point": {
+        "x": 950.08,
+        "y": 620
+      }
+    },
+    {
+      "id": "register:target",
+      "nodeId": "registry",
+      "side": "NORTH",
+      "point": {
+        "x": 1002.92,
+        "y": 550
+      }
+    },
+    {
+      "id": "baseline:source",
+      "nodeId": "registry",
+      "side": "SOUTH",
+      "point": {
+        "x": 1055.75,
+        "y": 620
+      }
+    },
+    {
+      "id": "deploy:target",
+      "nodeId": "sensor",
+      "side": "EAST",
+      "point": {
+        "x": 417,
+        "y": 761
+      }
+    },
+    {
+      "id": "cross-f:source",
+      "nodeId": "sensor",
+      "side": "SOUTH",
+      "point": {
+        "x": 169.67,
+        "y": 796
+      }
+    },
+    {
+      "id": "stream:source",
+      "nodeId": "sensor",
+      "side": "SOUTH",
+      "point": {
+        "x": 275.33,
+        "y": 796
+      }
+    },
+    {
+      "id": "feedback-capture:target",
+      "nodeId": "capture",
+      "side": "NORTH",
+      "point": {
+        "x": 690.75,
+        "y": 886
+      }
+    },
+    {
+      "id": "clean-input:source",
+      "nodeId": "capture",
+      "side": "WEST",
+      "point": {
+        "x": 573.08,
+        "y": 921
+      }
+    },
+    {
+      "id": "store:source",
+      "nodeId": "capture",
+      "side": "SOUTH",
+      "point": {
+        "x": 743.58,
+        "y": 956
+      }
+    },
+    {
+      "id": "stream:target",
+      "nodeId": "capture",
+      "side": "NORTH",
+      "point": {
+        "x": 796.42,
+        "y": 886
+      }
+    },
+    {
+      "id": "cross-i:source",
+      "nodeId": "raw",
+      "side": "WEST",
+      "point": {
+        "x": 2389.08,
+        "y": 417.33
+      }
+    },
+    {
+      "id": "cross-b:source",
+      "nodeId": "raw",
+      "side": "SOUTH",
+      "point": {
+        "x": 2559.58,
+        "y": 460
+      }
+    },
+    {
+      "id": "archive-link:source",
+      "nodeId": "raw",
+      "side": "WEST",
+      "point": {
+        "x": 2389.08,
+        "y": 432.67
+      }
+    },
+    {
+      "id": "store:target",
+      "nodeId": "raw",
+      "side": "NORTH",
+      "point": {
+        "x": 2559.58,
+        "y": 390
+      }
+    },
+    {
+      "id": "derive:source",
+      "nodeId": "clean",
+      "side": "SOUTH",
+      "point": {
+        "x": 532.25,
+        "y": 796
+      }
+    },
+    {
+      "id": "cross-k:source",
+      "nodeId": "clean",
+      "side": "SOUTH",
+      "point": {
+        "x": 611.5,
+        "y": 796
+      }
+    },
+    {
+      "id": "feedback-capture:source",
+      "nodeId": "clean",
+      "side": "SOUTH",
+      "point": {
+        "x": 690.75,
+        "y": 796
+      }
+    },
+    {
+      "id": "baseline:target",
+      "nodeId": "clean",
+      "side": "NORTH",
+      "point": {
+        "x": 611.5,
+        "y": 710
+      }
+    },
+    {
+      "id": "clean-input:target",
+      "nodeId": "clean",
+      "side": "EAST",
+      "point": {
+        "x": 806,
+        "y": 742.67
+      }
+    },
+    {
+      "id": "feedback-data:target",
+      "nodeId": "clean",
+      "side": "EAST",
+      "point": {
+        "x": 806,
+        "y": 763.33
+      }
+    },
+    {
+      "id": "derive:target",
+      "nodeId": "catalog",
+      "side": "NORTH",
+      "point": {
+        "x": 1643.92,
+        "y": 550
+      }
+    },
+    {
+      "id": "fit:source",
+      "nodeId": "catalog",
+      "side": "SOUTH",
+      "point": {
+        "x": 1591.08,
+        "y": 620
+      }
+    },
+    {
+      "id": "simulate:source",
+      "nodeId": "catalog",
+      "side": "SOUTH",
+      "point": {
+        "x": 1696.75,
+        "y": 620
+      }
+    },
+    {
+      "id": "cross-e:source",
+      "nodeId": "catalog",
+      "side": "WEST",
+      "point": {
+        "x": 1473.42,
+        "y": 585
+      }
+    },
+    {
+      "id": "cross-d:source",
+      "nodeId": "simulator",
+      "side": "SOUTH",
+      "point": {
+        "x": 1643.92,
+        "y": 796
+      }
+    },
+    {
+      "id": "simulate:target",
+      "nodeId": "simulator",
+      "side": "NORTH",
+      "point": {
+        "x": 1696.75,
+        "y": 710
+      }
+    },
+    {
+      "id": "controls:source",
+      "nodeId": "simulator",
+      "side": "SOUTH",
+      "point": {
+        "x": 1749.58,
+        "y": 796
+      }
+    },
+    {
+      "id": "fit:target",
+      "nodeId": "model",
+      "side": "NORTH",
+      "point": {
+        "x": 2555.58,
+        "y": 886
+      }
+    },
+    {
+      "id": "controls:target",
+      "nodeId": "model",
+      "side": "NORTH",
+      "point": {
+        "x": 2433.92,
+        "y": 886
+      }
+    },
+    {
+      "id": "validate:source",
+      "nodeId": "model",
+      "side": "WEST",
+      "point": {
+        "x": 2312.25,
+        "y": 929
+      }
+    },
+    {
+      "id": "refit:target",
+      "nodeId": "model",
+      "side": "EAST",
+      "point": {
+        "x": 2677.25,
+        "y": 914.67
+      }
+    },
+    {
+      "id": "cross-i:target",
+      "nodeId": "model",
+      "side": "EAST",
+      "point": {
+        "x": 2677.25,
+        "y": 943.33
+      }
+    },
+    {
+      "id": "cross-a:target",
+      "nodeId": "validation",
+      "side": "NORTH",
+      "point": {
+        "x": 2093.75,
+        "y": 1062
+      }
+    },
+    {
+      "id": "cross-h:source",
+      "nodeId": "validation",
+      "side": "WEST",
+      "point": {
+        "x": 1923.25,
+        "y": 1105
+      }
+    },
+    {
+      "id": "inspect:source",
+      "nodeId": "validation",
+      "side": "SOUTH",
+      "point": {
+        "x": 2093.75,
+        "y": 1148
+      }
+    },
+    {
+      "id": "validate:target",
+      "nodeId": "validation",
+      "side": "EAST",
+      "point": {
+        "x": 2288.25,
+        "y": 1105
+      }
+    },
+    {
+      "id": "cross-b:target",
+      "nodeId": "review",
+      "side": "NORTH",
+      "point": {
+        "x": 2559.58,
+        "y": 550
+      }
+    },
+    {
+      "id": "compose:source",
+      "nodeId": "review",
+      "side": "WEST",
+      "point": {
+        "x": 2441.92,
+        "y": 577.33
+      }
+    },
+    {
+      "id": "revise-model:source",
+      "nodeId": "review",
+      "side": "SOUTH",
+      "point": {
+        "x": 2612.42,
+        "y": 620
+      }
+    },
+    {
+      "id": "inspect:target",
+      "nodeId": "review",
+      "side": "NORTH",
+      "point": {
+        "x": 2665.25,
+        "y": 550
+      }
+    },
+    {
+      "id": "feedback-data:source",
+      "nodeId": "review",
+      "side": "WEST",
+      "point": {
+        "x": 2441.92,
+        "y": 592.67
+      }
+    },
+    {
+      "id": "cross-g:target",
+      "nodeId": "revision",
+      "side": "NORTH",
+      "point": {
+        "x": 2818.92,
+        "y": 710
+      }
+    },
+    {
+      "id": "revise-model:target",
+      "nodeId": "revision",
+      "side": "NORTH",
+      "point": {
+        "x": 2924.58,
+        "y": 710
+      }
+    },
+    {
+      "id": "refit:source",
+      "nodeId": "revision",
+      "side": "WEST",
+      "point": {
+        "x": 2701.25,
+        "y": 737.33
+      }
+    },
+    {
+      "id": "revise-protocol:source",
+      "nodeId": "revision",
+      "side": "WEST",
+      "point": {
+        "x": 2701.25,
+        "y": 752.67
+      }
+    },
+    {
+      "id": "cross-d:target",
+      "nodeId": "figures",
+      "side": "NORTH",
+      "point": {
+        "x": 1643.92,
+        "y": 886
+      }
+    },
+    {
+      "id": "publish:source",
+      "nodeId": "figures",
+      "side": "WEST",
+      "point": {
+        "x": 1526.25,
+        "y": 913.33
+      }
+    },
+    {
+      "id": "append:source",
+      "nodeId": "figures",
+      "side": "WEST",
+      "point": {
+        "x": 1526.25,
+        "y": 928.67
+      }
+    },
+    {
+      "id": "compose:target",
+      "nodeId": "figures",
+      "side": "EAST",
+      "point": {
+        "x": 1891.25,
+        "y": 921
+      }
+    },
+    {
+      "id": "cross-k:target",
+      "nodeId": "figures",
+      "side": "NORTH",
+      "point": {
+        "x": 1749.58,
+        "y": 886
+      }
+    },
+    {
+      "id": "append:target",
+      "nodeId": "appendix",
+      "side": "EAST",
+      "point": {
+        "x": 1071.75,
+        "y": 1114
+      }
+    },
+    {
+      "id": "methods:source",
+      "nodeId": "appendix",
+      "side": "SOUTH",
+      "point": {
+        "x": 889.25,
+        "y": 1137.33
+      }
+    },
+    {
+      "id": "cross-c:target",
+      "nodeId": "appendix",
+      "side": "NORTH",
+      "point": {
+        "x": 950.08,
+        "y": 1067.33
+      }
+    },
+    {
+      "id": "cross-e:target",
+      "nodeId": "appendix",
+      "side": "EAST",
+      "point": {
+        "x": 1071.75,
+        "y": 1090.67
+      }
+    },
+    {
+      "id": "cross-j:target",
+      "nodeId": "appendix",
+      "side": "NORTH",
+      "point": {
+        "x": 828.42,
+        "y": 1067.33
+      }
+    },
+    {
+      "id": "publish:target",
+      "nodeId": "paper",
+      "side": "EAST",
+      "point": {
+        "x": 1071.75,
+        "y": 1261.33
+      }
+    },
+    {
+      "id": "methods:target",
+      "nodeId": "paper",
+      "side": "NORTH",
+      "point": {
+        "x": 889.25,
+        "y": 1238
+      }
+    },
+    {
+      "id": "portal:source",
+      "nodeId": "paper",
+      "side": "SOUTH",
+      "point": {
+        "x": 889.25,
+        "y": 1308
+      }
+    },
+    {
+      "id": "cross-h:target",
+      "nodeId": "paper",
+      "side": "EAST",
+      "point": {
+        "x": 1071.75,
+        "y": 1284.67
+      }
+    },
+    {
+      "id": "portal:target",
+      "nodeId": "public-ref",
+      "side": "NORTH",
+      "point": {
+        "x": 889.25,
+        "y": 1398
+      }
+    },
+    {
+      "id": "cross-f:target",
+      "nodeId": "public-ref",
+      "side": "NORTH",
+      "point": {
+        "x": 815.92,
+        "y": 1398
+      }
+    },
+    {
+      "id": "archive-link:target",
+      "nodeId": "archive-ref",
+      "side": "EAST",
+      "point": {
+        "x": 1441.42,
+        "y": 585
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "open",
+      "source": "request",
+      "target": "scope",
+      "label": "submit research question",
+      "labelParts": {
+        "action": "Submit",
+        "predicates": [
+          "new study"
+        ]
+      },
+      "points": [
+        {
+          "x": 2636.42,
+          "y": 65
+        },
+        {
+          "x": 2624.42,
+          "y": 65
+        },
+        {
+          "x": 2624.42,
+          "y": 241
+        },
+        {
+          "x": 2612.42,
+          "y": 241
+        }
+      ],
+      "arrowhead": [
+        {
+          "x": 2612.42,
+          "y": 241
+        },
+        {
+          "x": 2619.42,
+          "y": 244
+        },
+        {
+          "x": 2619.42,
+          "y": 238
+        }
+      ],
+      "color": "#006A9E",
+      "labelBox": {
+        "x": 2523.75,
+        "y": 64.8,
+        "width": 94.67,
+        "height": 18
+      },
+      "labelLines": [
+        "[new study] Submit"
+      ],
+      "labelAngle": 0,
+      "labelOwner": "open",
+      "labelAnchor": {
+        "x": 2624.42,
+        "y": 73.8
+      },
+      "leader": [
+        {
+          "x": 2624.42,
+          "y": 73.8
+        },
+        {
+          "x": 2618.42,
+          "y": 73.8
+        }
+      ]
+    },
+    {
+      "id": "approve",
+      "source": "scope",
+      "target": "protocol",
+      "label": "approve experimental scope",
+      "labelParts": {
+        "action": "Approve",
+        "predicates": [
+          "feasible"
+        ]
+      },
+      "points": [
+        {
+          "x": 2247.42,
+          "y": 241
+        },
+        {
+          "x": 1002.92,
+          "y": 241
+        },
+        {
+          "x": 1002.92,
+          "y": 374
+        }
+      ],
+      "arrowhead": [
+        {
+          "x": 1002.92,
+          "y": 374
+        },
+        {
+          "x": 1005.92,
+          "y": 367
+        },
+        {
+          "x": 999.92,
+          "y": 367
+        }
+      ],
+      "color": "#006A9E",
+      "continuedAtTarget": true,
+      "labelBox": {
+        "x": 2140.4,
+        "y": 217,
+        "width": 89.59,
+        "height": 18
+      },
+      "labelLines": [
+        "[feasible] Approve"
+      ],
+      "labelAngle": 0,
+      "labelOwner": "approve",
+      "labelAnchor": {
+        "x": 2185.195,
+        "y": 241
+      },
+      "leader": [
+        {
+          "x": 2185.195,
+          "y": 241
+        },
+        {
+          "x": 2185.195,
+          "y": 235
+        }
+      ]
+    },
+    {
+      "id": "register",
+      "source": "protocol",
+      "target": "registry",
+      "label": "register immutable protocol revision",
+      "semanticClass": "secondary",
+      "points": [
+        {
+          "x": 1002.92,
+          "y": 460
+        },
+        {
+          "x": 1002.92,
+          "y": 550
+        }
+      ],
+      "arrowhead": [
+        {
+          "x": 1002.92,
+          "y": 550
+        },
+        {
+          "x": 1005.92,
+          "y": 543
+        },
+        {
+          "x": 999.92,
+          "y": 543
+        }
+      ],
+      "color": "#006A9E",
+      "labelBox": {
+        "x": 903.74,
+        "y": 463,
+        "width": 93.18,
+        "height": 30
+      },
+      "labelLines": [
+        "register immutable",
+        "protocol revision"
+      ],
+      "labelAngle": 0,
+      "labelOwner": "register",
+      "labelAnchor": {
+        "x": 1002.92,
+        "y": 478
+      },
+      "leader": [
+        {
+          "x": 1002.92,
+          "y": 478
+        },
+        {
+          "x": 996.9200000000001,
+          "y": 478
+        }
+      ]
+    },
+    {
+      "id": "deploy",
+      "source": "protocol",
+      "target": "sensor",
+      "label": "deploy sampling configuration",
+      "points": [
+        {
+          "x": 625.92,
+          "y": 417
+        },
+        {
+          "x": 429,
+          "y": 417
+        },
+        {
+          "x": 429,
+          "y": 585
+        },
+        {
+          "x": 429,
+          "y": 761
+        },
+        {
+          "x": 417,
+          "y": 761
+        }
+      ],
+      "arrowhead": [
+        {
+          "x": 417,
+          "y": 761
+        },
+        {
+          "x": 424,
+          "y": 764
+        },
+        {
+          "x": 424,
+          "y": 758
+        }
+      ],
+      "color": "#006A9E",
+      "labelBox": {
+        "x": 535.8749999999999,
+        "y": 381,
+        "width": 81.63000000000001,
+        "height": 30
+      },
+      "labelLines": [
+        "deploy sampling",
+        "configuration"
+      ],
+      "labelAngle": 0,
+      "labelOwner": "deploy",
+      "labelAnchor": {
+        "x": 576.6899999999999,
+        "y": 417
+      },
+      "leader": [
+        {
+          "x": 576.6899999999999,
+          "y": 417
+        },
+        {
+          "x": 576.6899999999999,
+          "y": 411
+        }
+      ]
+    },
+    {
+      "id": "stream",
+      "source": "sensor",
+      "target": "capture",
+      "label": "stream calibrated observations",
+      "points": [
+        {
+          "x": 275.33,
+          "y": 796
+        },
+        {
+          "x": 275.33,
+          "y": 838
+        },
+        {
+          "x": 796.42,
+          "y": 838
+        },
+        {
+          "x": 796.42,
+          "y": 886
+        }
+      ],
+      "arrowhead": [
+        {
+          "x": 796.42,
+          "y": 886
+        },
+        {
+          "x": 799.42,
+          "y": 879
+        },
+        {
+          "x": 793.42,
+          "y": 879
+        }
+      ],
+      "color": "#006A9E",
+      "labelBox": {
+        "x": 257.8995,
+        "y": 844,
+        "width": 86.97,
+        "height": 30
+      },
+      "labelLines": [
+        "stream calibrated",
+        "observations"
+      ],
+      "labelAngle": 0,
+      "labelOwner": "stream",
+      "labelAnchor": {
+        "x": 301.3845,
+        "y": 838
+      },
+      "leader": [
+        {
+          "x": 301.3845,
+          "y": 838
+        },
+        {
+          "x": 301.3845,
+          "y": 844
+        }
+      ]
+    },
+    {
+      "id": "store",
+      "source": "capture",
+      "target": "raw",
+      "label": "store raw observation objects",
+      "semanticClass": "secondary",
+      "points": [
+        {
+          "x": 743.58,
+          "y": 956
+        },
+        {
+          "x": 743.58,
+          "y": 994
+        },
+        {
+          "x": 22,
+          "y": 994
+        },
+        {
+          "x": 22,
+          "y": 929
+        },
+        {
+          "x": 22,
+          "y": 753
+        },
+        {
+          "x": 22,
+          "y": 585
+        },
+        {
+          "x": 22,
+          "y": 417
+        },
+        {
+          "x": 22,
+          "y": 306
+        },
+        {
+          "x": 2559.58,
+          "y": 306
+        },
+        {
+          "x": 2559.58,
+          "y": 390
+        }
+      ],
+      "arrowhead": [
+        {
+          "x": 2559.58,
+          "y": 390
+        },
+        {
+          "x": 2562.58,
+          "y": 383
+        },
+        {
+          "x": 2556.58,
+          "y": 383
+        }
+      ],
+      "color": "#00745B",
+      "labelBox": {
+        "x": 654.8460000000001,
+        "y": 1000,
+        "width": 105.31,
+        "height": 30
+      },
+      "labelLines": [
+        "store raw observation",
+        "objects"
+      ],
+      "labelAngle": 0,
+      "labelOwner": "store",
+      "labelAnchor": {
+        "x": 707.5010000000001,
+        "y": 994
+      },
+      "leader": [
+        {
+          "x": 707.5010000000001,
+          "y": 994
+        },
+        {
+          "x": 707.5010000000001,
+          "y": 1000
+        }
+      ]
+    },
+    {
+      "id": "clean-input",
+      "source": "capture",
+      "target": "clean",
+      "label": "route timestamped observation batch",
+      "points": [
+        {
+          "x": 573.08,
+          "y": 921
+        },
+        {
+          "x": 561.08,
+          "y": 921
+        },
+        {
+          "x": 561.08,
+          "y": 828
+        },
+        {
+          "x": 942.08,
+          "y": 828
+        },
+        {
+          "x": 942.08,
+          "y": 742.67
+        },
+        {
+          "x": 806,
+          "y": 742.67
+        }
+      ],
+      "arrowhead": [
+        {
+          "x": 806,
+          "y": 742.67
+        },
+        {
+          "x": 813,
+          "y": 745.67
+        },
+        {
+          "x": 813,
+          "y": 739.67
+        }
+      ],
+      "color": "#006A9E",
+      "labelBox": {
+        "x": 799.87,
+        "y": 834,
+        "width": 93.92,
+        "height": 30
+      },
+      "labelLines": [
+        "route timestamped",
+        "observation batch"
+      ],
+      "labelAngle": 0,
+      "labelOwner": "clean-input",
+      "labelAnchor": {
+        "x": 846.83,
+        "y": 828
+      },
+      "leader": [
+        {
+          "x": 846.83,
+          "y": 828
+        },
+        {
+          "x": 846.83,
+          "y": 834
+        }
+      ]
+    },
+    {
+      "id": "baseline",
+      "source": "registry",
+      "target": "clean",
+      "label": "retrieve protocol baseline",
+      "style": "dashed",
+      "semanticClass": "optional",
+      "points": [
+        {
+          "x": 1055.75,
+          "y": 620
+        },
+        {
+          "x": 1055.75,
+          "y": 632
+        },
+        {
+          "x": 611.5,
+          "y": 632
+        },
+        {
+          "x": 611.5,
+          "y": 710
+        }
+      ],
+      "arrowhead": [
+        {
+          "x": 611.5,
+          "y": 710
+        },
+        {
+          "x": 614.5,
+          "y": 703
+        },
+        {
+          "x": 608.5,
+          "y": 703
+        }
+      ],
+      "color": "#A64900",
+      "labelBox": {
+        "x": 992.4024999999999,
+        "y": 638,
+        "width": 82.27,
+        "height": 30
+      },
+      "labelLines": [
+        "retrieve protocol",
+        "baseline"
+      ],
+      "labelAngle": 0,
+      "labelOwner": "baseline",
+      "labelAnchor": {
+        "x": 1033.5375,
+        "y": 632
+      },
+      "leader": [
+        {
+          "x": 1033.5375,
+          "y": 632
+        },
+        {
+          "x": 1033.5375,
+          "y": 638
+        }
+      ]
+    },
+    {
+      "id": "derive",
+      "source": "clean",
+      "target": "catalog",
+      "label": "derive quality-controlled features",
+      "points": [
+        {
+          "x": 532.25,
+          "y": 796
+        },
+        {
+          "x": 532.25,
+          "y": 808
+        },
+        {
+          "x": 1209.42,
+          "y": 808
+        },
+        {
+          "x": 1209.42,
+          "y": 753
+        },
+        {
+          "x": 1209.42,
+          "y": 585
+        },
+        {
+          "x": 1209.42,
+          "y": 482
+        },
+        {
+          "x": 1643.92,
+          "y": 482
+        },
+        {
+          "x": 1643.92,
+          "y": 550
+        }
+      ],
+      "arrowhead": [
+        {
+          "x": 1643.92,
+          "y": 550
+        },
+        {
+          "x": 1646.92,
+          "y": 543
+        },
+        {
+          "x": 1640.92,
+          "y": 543
+        }
+      ],
+      "color": "#A64900",
+      "labelBox": {
+        "x": 1187.05,
+        "y": 434,
+        "width": 88.19,
+        "height": 42
+      },
+      "labelLines": [
+        "derive",
+        "quality-controlled",
+        "features"
+      ],
+      "labelAngle": 0,
+      "labelOwner": "derive",
+      "labelAnchor": {
+        "x": 1231.145,
+        "y": 482
+      },
+      "leader": [
+        {
+          "x": 1231.145,
+          "y": 482
+        },
+        {
+          "x": 1231.145,
+          "y": 476
+        }
+      ]
+    },
+    {
+      "id": "simulate",
+      "source": "catalog",
+      "target": "simulator",
+      "label": "seed synthetic control scenarios",
+      "points": [
+        {
+          "x": 1696.75,
+          "y": 620
+        },
+        {
+          "x": 1696.75,
+          "y": 710
+        }
+      ],
+      "arrowhead": [
+        {
+          "x": 1696.75,
+          "y": 710
+        },
+        {
+          "x": 1699.75,
+          "y": 703
+        },
+        {
+          "x": 1693.75,
+          "y": 703
+        }
+      ],
+      "color": "#006A9E",
+      "labelBox": {
+        "x": 1702.75,
+        "y": 645.5,
+        "width": 107.14999999999999,
+        "height": 30
+      },
+      "labelLines": [
+        "seed synthetic control",
+        "scenarios"
+      ],
+      "labelAngle": 0,
+      "labelOwner": "simulate",
+      "labelAnchor": {
+        "x": 1696.75,
+        "y": 660.5
+      },
+      "leader": [
+        {
+          "x": 1696.75,
+          "y": 660.5
+        },
+        {
+          "x": 1702.75,
+          "y": 660.5
+        }
+      ]
+    },
+    {
+      "id": "fit",
+      "source": "catalog",
+      "target": "model",
+      "label": "provide descriptor matrix for constrained fitting",
+      "points": [
+        {
+          "x": 1591.08,
+          "y": 620
+        },
+        {
+          "x": 1591.08,
+          "y": 642
+        },
+        {
+          "x": 2555.58,
+          "y": 642
+        },
+        {
+          "x": 2555.58,
+          "y": 753
+        },
+        {
+          "x": 2555.58,
+          "y": 886
+        }
+      ],
+      "arrowhead": [
+        {
+          "x": 2555.58,
+          "y": 886
+        },
+        {
+          "x": 2558.58,
+          "y": 879
+        },
+        {
+          "x": 2552.58,
+          "y": 879
+        }
+      ],
+      "color": "#006A9E",
+      "labelBox": {
+        "x": 1585.7999999999997,
+        "y": 648,
+        "width": 107.00999999999999,
+        "height": 42
+      },
+      "labelLines": [
+        "provide descriptor",
+        "matrix for constrained",
+        "fitting"
+      ],
+      "labelAngle": 0,
+      "labelOwner": "fit",
+      "labelAnchor": {
+        "x": 1639.3049999999998,
+        "y": 642
+      },
+      "leader": [
+        {
+          "x": 1639.3049999999998,
+          "y": 642
+        },
+        {
+          "x": 1639.3049999999998,
+          "y": 648
+        }
+      ]
+    },
+    {
+      "id": "controls",
+      "source": "simulator",
+      "target": "model",
+      "label": "supply counterfactual control ensemble",
+      "semanticClass": "secondary",
+      "points": [
+        {
+          "x": 1749.58,
+          "y": 796
+        },
+        {
+          "x": 1749.58,
+          "y": 808
+        },
+        {
+          "x": 2433.92,
+          "y": 808
+        },
+        {
+          "x": 2433.92,
+          "y": 886
+        }
+      ],
+      "arrowhead": [
+        {
+          "x": 2433.92,
+          "y": 886
+        },
+        {
+          "x": 2436.92,
+          "y": 879
+        },
+        {
+          "x": 2430.92,
+          "y": 879
+        }
+      ],
+      "color": "#006A9E",
+      "labelBox": {
+        "x": 1765.224,
+        "y": 814,
+        "width": 105.57999999999998,
+        "height": 30
+      },
+      "labelLines": [
+        "supply counterfactual",
+        "control ensemble"
+      ],
+      "labelAngle": 0,
+      "labelOwner": "controls",
+      "labelAnchor": {
+        "x": 1818.014,
+        "y": 808
+      },
+      "leader": [
+        {
+          "x": 1818.014,
+          "y": 808
+        },
+        {
+          "x": 1818.014,
+          "y": 814
+        }
+      ]
+    },
+    {
+      "id": "validate",
+      "source": "model",
+      "target": "validation",
+      "label": "submit candidate model and uncertainty envelope",
+      "points": [
+        {
+          "x": 2312.25,
+          "y": 929
+        },
+        {
+          "x": 2300.25,
+          "y": 929
+        },
+        {
+          "x": 2300.25,
+          "y": 1105
+        },
+        {
+          "x": 2288.25,
+          "y": 1105
+        }
+      ],
+      "arrowhead": [
+        {
+          "x": 2288.25,
+          "y": 1105
+        },
+        {
+          "x": 2295.25,
+          "y": 1108
+        },
+        {
+          "x": 2295.25,
+          "y": 1102
+        }
+      ],
+      "color": "#006A9E",
+      "labelBox": {
+        "x": 2185.31,
+        "y": 925.6,
+        "width": 108.94,
+        "height": 42
+      },
+      "labelLines": [
+        "submit candidate",
+        "model and uncertainty",
+        "envelope"
+      ],
+      "labelAngle": 0,
+      "labelOwner": "validate",
+      "labelAnchor": {
+        "x": 2300.25,
+        "y": 946.6
+      },
+      "leader": [
+        {
+          "x": 2300.25,
+          "y": 946.6
+        },
+        {
+          "x": 2294.25,
+          "y": 946.6
+        }
+      ]
+    },
+    {
+      "id": "inspect",
+      "source": "validation",
+      "target": "review",
+      "label": "review validation diagnostics",
+      "points": [
+        {
+          "x": 2093.75,
+          "y": 1148
+        },
+        {
+          "x": 2093.75,
+          "y": 1160
+        },
+        {
+          "x": 1903.25,
+          "y": 1160
+        },
+        {
+          "x": 1903.25,
+          "y": 1105
+        },
+        {
+          "x": 1903.25,
+          "y": 929
+        },
+        {
+          "x": 1903.25,
+          "y": 753
+        },
+        {
+          "x": 1903.25,
+          "y": 585
+        },
+        {
+          "x": 1903.25,
+          "y": 482
+        },
+        {
+          "x": 2665.25,
+          "y": 482
+        },
+        {
+          "x": 2665.25,
+          "y": 550
+        }
+      ],
+      "arrowhead": [
+        {
+          "x": 2665.25,
+          "y": 550
+        },
+        {
+          "x": 2668.25,
+          "y": 543
+        },
+        {
+          "x": 2662.25,
+          "y": 543
+        }
+      ],
+      "color": "#91466E",
+      "labelBox": {
+        "x": 2042.35,
+        "y": 1166,
+        "width": 83.75,
+        "height": 30
+      },
+      "labelLines": [
+        "review validation",
+        "diagnostics"
+      ],
+      "labelAngle": 0,
+      "labelOwner": "inspect",
+      "labelAnchor": {
+        "x": 2084.225,
+        "y": 1160
+      },
+      "leader": [
+        {
+          "x": 2084.225,
+          "y": 1160
+        },
+        {
+          "x": 2084.225,
+          "y": 1166
+        }
+      ]
+    },
+    {
+      "id": "revise-model",
+      "source": "review",
+      "target": "revision",
+      "label": "request model revision",
+      "style": "dashed",
+      "semanticClass": "optional",
+      "points": [
+        {
+          "x": 2612.42,
+          "y": 620
+        },
+        {
+          "x": 2612.42,
+          "y": 632
+        },
+        {
+          "x": 2924.58,
+          "y": 632
+        },
+        {
+          "x": 2924.58,
+          "y": 710
+        }
+      ],
+      "arrowhead": [
+        {
+          "x": 2924.58,
+          "y": 710
+        },
+        {
+          "x": 2927.58,
+          "y": 703
+        },
+        {
+          "x": 2921.58,
+          "y": 703
+        }
+      ],
+      "color": "#A64900",
+      "labelBox": {
+        "x": 2572.753,
+        "y": 638,
+        "width": 110.55000000000001,
+        "height": 18
+      },
+      "labelLines": [
+        "request model revision"
+      ],
+      "labelAngle": 0,
+      "labelOwner": "revise-model",
+      "labelAnchor": {
+        "x": 2628.0280000000002,
+        "y": 632
+      },
+      "leader": [
+        {
+          "x": 2628.0280000000002,
+          "y": 632
+        },
+        {
+          "x": 2628.0280000000002,
+          "y": 638
+        }
+      ]
+    },
+    {
+      "id": "revise-protocol",
+      "source": "revision",
+      "target": "protocol",
+      "label": "return protocol clarification",
+      "style": "dashed",
+      "semanticClass": "optional",
+      "points": [
+        {
+          "x": 2701.25,
+          "y": 752.67
+        },
+        {
+          "x": 2283.25,
+          "y": 752.67
+        },
+        {
+          "x": 2283.25,
+          "y": 585
+        },
+        {
+          "x": 2283.25,
+          "y": 417
+        },
+        {
+          "x": 2283.25,
+          "y": 316
+        },
+        {
+          "x": 993.92,
+          "y": 316
+        },
+        {
+          "x": 993.92,
+          "y": 374
+        }
+      ],
+      "arrowhead": [
+        {
+          "x": 993.92,
+          "y": 374
+        },
+        {
+          "x": 996.92,
+          "y": 367
+        },
+        {
+          "x": 990.92,
+          "y": 367
+        }
+      ],
+      "color": "#006A9E",
+      "continuedAtTarget": true,
+      "labelBox": {
+        "x": 2600.855,
+        "y": 716.67,
+        "width": 75.39,
+        "height": 30
+      },
+      "labelLines": [
+        "return protocol",
+        "clarification"
+      ],
+      "labelAngle": 0,
+      "labelOwner": "revise-protocol",
+      "labelAnchor": {
+        "x": 2638.55,
+        "y": 752.67
+      },
+      "leader": [
+        {
+          "x": 2638.55,
+          "y": 752.67
+        },
+        {
+          "x": 2638.55,
+          "y": 746.67
+        }
+      ]
+    },
+    {
+      "id": "refit",
+      "source": "revision",
+      "target": "model",
+      "label": "return model calibration note",
+      "style": "dashed",
+      "semanticClass": "optional",
+      "points": [
+        {
+          "x": 2701.25,
+          "y": 737.33
+        },
+        {
+          "x": 2689.25,
+          "y": 737.33
+        },
+        {
+          "x": 2689.25,
+          "y": 914.67
+        },
+        {
+          "x": 2677.25,
+          "y": 914.67
+        }
+      ],
+      "arrowhead": [
+        {
+          "x": 2677.25,
+          "y": 914.67
+        },
+        {
+          "x": 2684.25,
+          "y": 917.67
+        },
+        {
+          "x": 2684.25,
+          "y": 911.67
+        }
+      ],
+      "color": "#00745B",
+      "labelBox": {
+        "x": 2605,
+        "y": 757.798,
+        "width": 78.25,
+        "height": 30
+      },
+      "labelLines": [
+        "return model",
+        "calibration note"
+      ],
+      "labelAngle": 0,
+      "labelOwner": "refit",
+      "labelAnchor": {
+        "x": 2689.25,
+        "y": 772.798
+      },
+      "leader": [
+        {
+          "x": 2689.25,
+          "y": 772.798
+        },
+        {
+          "x": 2683.25,
+          "y": 772.798
+        }
+      ]
+    },
+    {
+      "id": "compose",
+      "source": "review",
+      "target": "figures",
+      "label": "compose evidence figure panels",
+      "points": [
+        {
+          "x": 2441.92,
+          "y": 577.33
+        },
+        {
+          "x": 2292.25,
+          "y": 577.33
+        },
+        {
+          "x": 2292.25,
+          "y": 753
+        },
+        {
+          "x": 2292.25,
+          "y": 921
+        },
+        {
+          "x": 1891.25,
+          "y": 921
+        }
+      ],
+      "arrowhead": [
+        {
+          "x": 1891.25,
+          "y": 921
+        },
+        {
+          "x": 1898.25,
+          "y": 924
+        },
+        {
+          "x": 1898.25,
+          "y": 918
+        }
+      ],
+      "color": "#A64900",
+      "labelBox": {
+        "x": 2343.6955,
+        "y": 541.33,
+        "width": 91.68,
+        "height": 30
+      },
+      "labelLines": [
+        "compose evidence",
+        "figure panels"
+      ],
+      "labelAngle": 0,
+      "labelOwner": "compose",
+      "labelAnchor": {
+        "x": 2389.5355,
+        "y": 577.33
+      },
+      "leader": [
+        {
+          "x": 2389.5355,
+          "y": 577.33
+        },
+        {
+          "x": 2389.5355,
+          "y": 571.33
+        }
+      ]
+    },
+    {
+      "id": "append",
+      "source": "figures",
+      "target": "appendix",
+      "label": "attach provenance appendix",
+      "points": [
+        {
+          "x": 1526.25,
+          "y": 928.67
+        },
+        {
+          "x": 1506.25,
+          "y": 928.67
+        },
+        {
+          "x": 1506.25,
+          "y": 1114
+        },
+        {
+          "x": 1071.75,
+          "y": 1114
+        }
+      ],
+      "arrowhead": [
+        {
+          "x": 1071.75,
+          "y": 1114
+        },
+        {
+          "x": 1078.75,
+          "y": 1117
+        },
+        {
+          "x": 1078.75,
+          "y": 1111
+        }
+      ],
+      "color": "#006A9E",
+      "labelBox": {
+        "x": 1417.245,
+        "y": 1120,
+        "width": 91.11,
+        "height": 30
+      },
+      "labelLines": [
+        "attach provenance",
+        "appendix"
+      ],
+      "labelAngle": 0,
+      "labelOwner": "append",
+      "labelAnchor": {
+        "x": 1462.8,
+        "y": 1114
+      },
+      "leader": [
+        {
+          "x": 1462.8,
+          "y": 1114
+        },
+        {
+          "x": 1462.8,
+          "y": 1120
+        }
+      ]
+    },
+    {
+      "id": "publish",
+      "source": "figures",
+      "target": "paper",
+      "label": "assemble publication-ready results",
+      "points": [
+        {
+          "x": 1526.25,
+          "y": 913.33
+        },
+        {
+          "x": 1514.25,
+          "y": 913.33
+        },
+        {
+          "x": 1514.25,
+          "y": 1105
+        },
+        {
+          "x": 1514.25,
+          "y": 1261.33
+        },
+        {
+          "x": 1071.75,
+          "y": 1261.33
+        }
+      ],
+      "arrowhead": [
+        {
+          "x": 1071.75,
+          "y": 1261.33
+        },
+        {
+          "x": 1078.75,
+          "y": 1264.33
+        },
+        {
+          "x": 1078.75,
+          "y": 1258.33
+        }
+      ],
+      "color": "#00745B",
+      "labelBox": {
+        "x": 1404.18,
+        "y": 1213.33,
+        "width": 87.39,
+        "height": 42
+      },
+      "labelLines": [
+        "assemble",
+        "publication-ready",
+        "results"
+      ],
+      "labelAngle": 0,
+      "labelOwner": "publish",
+      "labelAnchor": {
+        "x": 1447.875,
+        "y": 1261.33
+      },
+      "leader": [
+        {
+          "x": 1447.875,
+          "y": 1261.33
+        },
+        {
+          "x": 1447.875,
+          "y": 1255.33
+        }
+      ]
+    },
+    {
+      "id": "methods",
+      "source": "appendix",
+      "target": "paper",
+      "label": "include reproducible methods record",
+      "semanticClass": "secondary",
+      "points": [
+        {
+          "x": 889.25,
+          "y": 1137.33
+        },
+        {
+          "x": 889.25,
+          "y": 1238
+        }
+      ],
+      "arrowhead": [
+        {
+          "x": 889.25,
+          "y": 1238
+        },
+        {
+          "x": 892.25,
+          "y": 1231
+        },
+        {
+          "x": 886.25,
+          "y": 1231
+        }
+      ],
+      "color": "#006A9E",
+      "labelBox": {
+        "x": 782.84,
+        "y": 1142.464,
+        "width": 100.41,
+        "height": 30
+      },
+      "labelLines": [
+        "include reproducible",
+        "methods record"
+      ],
+      "labelAngle": 0,
+      "labelOwner": "methods",
+      "labelAnchor": {
+        "x": 889.25,
+        "y": 1157.464
+      },
+      "leader": [
+        {
+          "x": 889.25,
+          "y": 1157.464
+        },
+        {
+          "x": 883.25,
+          "y": 1157.464
+        }
+      ]
+    },
+    {
+      "id": "portal",
+      "source": "paper",
+      "target": "public-ref",
+      "label": "publish synthetic dataset metadata",
+      "points": [
+        {
+          "x": 889.25,
+          "y": 1308
+        },
+        {
+          "x": 889.25,
+          "y": 1398
+        }
+      ],
+      "arrowhead": [
+        {
+          "x": 889.25,
+          "y": 1398
+        },
+        {
+          "x": 892.25,
+          "y": 1391
+        },
+        {
+          "x": 886.25,
+          "y": 1391
+        }
+      ],
+      "color": "#A64900",
+      "labelBox": {
+        "x": 895.25,
+        "y": 1311,
+        "width": 87.28,
+        "height": 30
+      },
+      "labelLines": [
+        "publish synthetic",
+        "dataset metadata"
+      ],
+      "labelAngle": 0,
+      "labelOwner": "portal",
+      "labelAnchor": {
+        "x": 889.25,
+        "y": 1326
+      },
+      "leader": [
+        {
+          "x": 889.25,
+          "y": 1326
+        },
+        {
+          "x": 895.25,
+          "y": 1326
+        }
+      ]
+    },
+    {
+      "id": "archive-link",
+      "source": "raw",
+      "target": "archive-ref",
+      "label": "link retained raw archive metadata",
+      "semanticClass": "secondary",
+      "points": [
+        {
+          "x": 2389.08,
+          "y": 432.67
+        },
+        {
+          "x": 1453.42,
+          "y": 432.67
+        },
+        {
+          "x": 1453.42,
+          "y": 585
+        },
+        {
+          "x": 1441.42,
+          "y": 585
+        }
+      ],
+      "arrowhead": [
+        {
+          "x": 1441.42,
+          "y": 585
+        },
+        {
+          "x": 1448.42,
+          "y": 588
+        },
+        {
+          "x": 1448.42,
+          "y": 582
+        }
+      ],
+      "color": "#006A9E",
+      "labelBox": {
+        "x": 2158.988,
+        "y": 396.67,
+        "width": 85.92,
+        "height": 30
+      },
+      "labelLines": [
+        "link retained raw",
+        "archive metadata"
+      ],
+      "labelAngle": 0,
+      "labelOwner": "archive-link",
+      "labelAnchor": {
+        "x": 2201.948,
+        "y": 432.67
+      },
+      "leader": [
+        {
+          "x": 2201.948,
+          "y": 432.67
+        },
+        {
+          "x": 2201.948,
+          "y": 426.67
+        }
+      ]
+    },
+    {
+      "id": "feedback-data",
+      "source": "review",
+      "target": "clean",
+      "label": "send anomaly feedback to cleaning pipeline",
+      "style": "dashed",
+      "semanticClass": "alert",
+      "points": [
+        {
+          "x": 2441.92,
+          "y": 592.67
+        },
+        {
+          "x": 1895.25,
+          "y": 592.67
+        },
+        {
+          "x": 1895.25,
+          "y": 632
+        },
+        {
+          "x": 1514.25,
+          "y": 632
+        },
+        {
+          "x": 1514.25,
+          "y": 763.33
+        },
+        {
+          "x": 806,
+          "y": 763.33
+        }
+      ],
+      "arrowhead": [
+        {
+          "x": 806,
+          "y": 763.33
+        },
+        {
+          "x": 813,
+          "y": 766.33
+        },
+        {
+          "x": 813,
+          "y": 760.33
+        }
+      ],
+      "color": "#00745B",
+      "labelBox": {
+        "x": 2172.787,
+        "y": 544.67,
+        "width": 100.92999999999999,
+        "height": 42
+      },
+      "labelLines": [
+        "send anomaly",
+        "feedback to cleaning",
+        "pipeline"
+      ],
+      "labelAngle": 0,
+      "labelOwner": "feedback-data",
+      "labelAnchor": {
+        "x": 2223.252,
+        "y": 592.67
+      },
+      "leader": [
+        {
+          "x": 2223.252,
+          "y": 592.67
+        },
+        {
+          "x": 2223.252,
+          "y": 586.67
+        }
+      ]
+    },
+    {
+      "id": "feedback-capture",
+      "source": "clean",
+      "target": "capture",
+      "label": "request recapture for flagged measurements",
+      "style": "dashed",
+      "semanticClass": "alert",
+      "points": [
+        {
+          "x": 690.75,
+          "y": 796
+        },
+        {
+          "x": 690.75,
+          "y": 886
+        }
+      ],
+      "arrowhead": [
+        {
+          "x": 690.75,
+          "y": 886
+        },
+        {
+          "x": 693.75,
+          "y": 879
+        },
+        {
+          "x": 687.75,
+          "y": 879
+        }
+      ],
+      "color": "#006A9E",
+      "labelBox": {
+        "x": 573.78,
+        "y": 844,
+        "width": 110.97,
+        "height": 30
+      },
+      "labelLines": [
+        "request recapture for",
+        "flagged measurements"
+      ],
+      "labelAngle": 0,
+      "labelOwner": "feedback-capture",
+      "labelAnchor": {
+        "x": 690.75,
+        "y": 859
+      },
+      "leader": [
+        {
+          "x": 690.75,
+          "y": 859
+        },
+        {
+          "x": 684.75,
+          "y": 859
+        }
+      ]
+    },
+    {
+      "id": "cross-a",
+      "source": "scope",
+      "target": "validation",
+      "label": "carry approved acceptance criteria",
+      "semanticClass": "secondary",
+      "points": [
+        {
+          "x": 2429.92,
+          "y": 284
+        },
+        {
+          "x": 2429.92,
+          "y": 296
+        },
+        {
+          "x": 3087.25,
+          "y": 296
+        },
+        {
+          "x": 3087.25,
+          "y": 417
+        },
+        {
+          "x": 3087.25,
+          "y": 585
+        },
+        {
+          "x": 3087.25,
+          "y": 753
+        },
+        {
+          "x": 3087.25,
+          "y": 929
+        },
+        {
+          "x": 3087.25,
+          "y": 984
+        },
+        {
+          "x": 2093.75,
+          "y": 984
+        },
+        {
+          "x": 2093.75,
+          "y": 1062
+        }
+      ],
+      "arrowhead": [
+        {
+          "x": 2093.75,
+          "y": 1062
+        },
+        {
+          "x": 2096.75,
+          "y": 1055
+        },
+        {
+          "x": 2090.75,
+          "y": 1055
+        }
+      ],
+      "color": "#006A9E",
+      "labelBox": {
+        "x": 2580.3540000000003,
+        "y": 302,
+        "width": 93.53,
+        "height": 30
+      },
+      "labelLines": [
+        "carry approved",
+        "acceptance criteria"
+      ],
+      "labelAngle": 0,
+      "labelOwner": "cross-a",
+      "labelAnchor": {
+        "x": 2627.119,
+        "y": 296
+      },
+      "leader": [
+        {
+          "x": 2627.119,
+          "y": 296
+        },
+        {
+          "x": 2627.119,
+          "y": 302
+        }
+      ]
+    },
+    {
+      "id": "cross-b",
+      "source": "raw",
+      "target": "review",
+      "label": "compare archive completeness during review",
+      "semanticClass": "secondary",
+      "points": [
+        {
+          "x": 2559.58,
+          "y": 460
+        },
+        {
+          "x": 2559.58,
+          "y": 550
+        }
+      ],
+      "arrowhead": [
+        {
+          "x": 2559.58,
+          "y": 550
+        },
+        {
+          "x": 2562.58,
+          "y": 543
+        },
+        {
+          "x": 2556.58,
+          "y": 543
+        }
+      ],
+      "color": "#006A9E",
+      "labelBox": {
+        "x": 2451.49,
+        "y": 488.5,
+        "width": 102.09,
+        "height": 42
+      },
+      "labelLines": [
+        "compare archive",
+        "completeness during",
+        "review"
+      ],
+      "labelAngle": 0,
+      "labelOwner": "cross-b",
+      "labelAnchor": {
+        "x": 2559.58,
+        "y": 509.5
+      },
+      "leader": [
+        {
+          "x": 2559.58,
+          "y": 509.5
+        },
+        {
+          "x": 2553.58,
+          "y": 509.5
+        }
+      ]
+    },
+    {
+      "id": "cross-c",
+      "source": "registry",
+      "target": "appendix",
+      "label": "cite registered protocol identifier",
+      "semanticClass": "secondary",
+      "points": [
+        {
+          "x": 950.08,
+          "y": 620
+        },
+        {
+          "x": 950.08,
+          "y": 753
+        },
+        {
+          "x": 950.08,
+          "y": 929
+        },
+        {
+          "x": 950.08,
+          "y": 1067.33
+        }
+      ],
+      "arrowhead": [
+        {
+          "x": 950.08,
+          "y": 1067.33
+        },
+        {
+          "x": 953.08,
+          "y": 1060.33
+        },
+        {
+          "x": 947.08,
+          "y": 1060.33
+        }
+      ],
+      "color": "#A64900",
+      "labelBox": {
+        "x": 856.03,
+        "y": 638.25,
+        "width": 88.05000000000001,
+        "height": 30
+      },
+      "labelLines": [
+        "cite registered",
+        "protocol identifier"
+      ],
+      "labelAngle": 0,
+      "labelOwner": "cross-c",
+      "labelAnchor": {
+        "x": 950.08,
+        "y": 653.25
+      },
+      "leader": [
+        {
+          "x": 950.08,
+          "y": 653.25
+        },
+        {
+          "x": 944.0799999999999,
+          "y": 653.25
+        }
+      ]
+    },
+    {
+      "id": "cross-d",
+      "source": "simulator",
+      "target": "figures",
+      "label": "annotate simulated control envelope",
+      "semanticClass": "secondary",
+      "points": [
+        {
+          "x": 1643.92,
+          "y": 796
+        },
+        {
+          "x": 1643.92,
+          "y": 886
+        }
+      ],
+      "arrowhead": [
+        {
+          "x": 1643.92,
+          "y": 886
+        },
+        {
+          "x": 1646.92,
+          "y": 879
+        },
+        {
+          "x": 1640.92,
+          "y": 879
+        }
+      ],
+      "color": "#006A9E",
+      "labelBox": {
+        "x": 1542.8500000000001,
+        "y": 821.5,
+        "width": 95.07000000000001,
+        "height": 30
+      },
+      "labelLines": [
+        "annotate simulated",
+        "control envelope"
+      ],
+      "labelAngle": 0,
+      "labelOwner": "cross-d",
+      "labelAnchor": {
+        "x": 1643.92,
+        "y": 836.5
+      },
+      "leader": [
+        {
+          "x": 1643.92,
+          "y": 836.5
+        },
+        {
+          "x": 1637.92,
+          "y": 836.5
+        }
+      ]
+    },
+    {
+      "id": "cross-e",
+      "source": "catalog",
+      "target": "appendix",
+      "label": "summarize feature lineage",
+      "semanticClass": "secondary",
+      "points": [
+        {
+          "x": 1473.42,
+          "y": 585
+        },
+        {
+          "x": 1461.42,
+          "y": 585
+        },
+        {
+          "x": 1461.42,
+          "y": 753
+        },
+        {
+          "x": 1461.42,
+          "y": 929
+        },
+        {
+          "x": 1461.42,
+          "y": 1090.67
+        },
+        {
+          "x": 1071.75,
+          "y": 1090.67
+        }
+      ],
+      "arrowhead": [
+        {
+          "x": 1071.75,
+          "y": 1090.67
+        },
+        {
+          "x": 1078.75,
+          "y": 1093.67
+        },
+        {
+          "x": 1078.75,
+          "y": 1087.67
+        }
+      ],
+      "color": "#A64900",
+      "labelBox": {
+        "x": 1356.8495000000003,
+        "y": 1054.67,
+        "width": 92.24,
+        "height": 30
+      },
+      "labelLines": [
+        "summarize feature",
+        "lineage"
+      ],
+      "labelAngle": 0,
+      "labelOwner": "cross-e",
+      "labelAnchor": {
+        "x": 1402.9695000000002,
+        "y": 1090.67
+      },
+      "leader": [
+        {
+          "x": 1402.9695000000002,
+          "y": 1090.67
+        },
+        {
+          "x": 1402.9695000000002,
+          "y": 1084.67
+        }
+      ]
+    },
+    {
+      "id": "cross-f",
+      "source": "sensor",
+      "target": "public-ref",
+      "label": "describe instrument channel availability",
+      "semanticClass": "secondary",
+      "points": [
+        {
+          "x": 169.67,
+          "y": 796
+        },
+        {
+          "x": 169.67,
+          "y": 808
+        },
+        {
+          "x": 30,
+          "y": 808
+        },
+        {
+          "x": 30,
+          "y": 929
+        },
+        {
+          "x": 30,
+          "y": 1105
+        },
+        {
+          "x": 30,
+          "y": 1273
+        },
+        {
+          "x": 30,
+          "y": 1320
+        },
+        {
+          "x": 815.92,
+          "y": 1320
+        },
+        {
+          "x": 815.92,
+          "y": 1398
+        }
+      ],
+      "arrowhead": [
+        {
+          "x": 815.92,
+          "y": 1398
+        },
+        {
+          "x": 818.92,
+          "y": 1391
+        },
+        {
+          "x": 812.92,
+          "y": 1391
+        }
+      ],
+      "color": "#006A9E",
+      "labelBox": {
+        "x": 113.5565,
+        "y": 814,
+        "width": 98.25999999999999,
+        "height": 30
+      },
+      "labelLines": [
+        "describe instrument",
+        "channel availability"
+      ],
+      "labelAngle": 0,
+      "labelOwner": "cross-f",
+      "labelAnchor": {
+        "x": 162.6865,
+        "y": 808
+      },
+      "leader": [
+        {
+          "x": 162.6865,
+          "y": 808
+        },
+        {
+          "x": 162.6865,
+          "y": 814
+        }
+      ]
+    },
+    {
+      "id": "cross-g",
+      "source": "request",
+      "target": "revision",
+      "label": "preserve original question when revisions occur",
+      "semanticClass": "secondary",
+      "points": [
+        {
+          "x": 2818.92,
+          "y": 108
+        },
+        {
+          "x": 2818.92,
+          "y": 241
+        },
+        {
+          "x": 2818.92,
+          "y": 417
+        },
+        {
+          "x": 2818.92,
+          "y": 585
+        },
+        {
+          "x": 2818.92,
+          "y": 710
+        }
+      ],
+      "arrowhead": [
+        {
+          "x": 2818.92,
+          "y": 710
+        },
+        {
+          "x": 2821.92,
+          "y": 703
+        },
+        {
+          "x": 2815.92,
+          "y": 703
+        }
+      ],
+      "color": "#006A9E",
+      "labelBox": {
+        "x": 2729.9,
+        "y": 113.6,
+        "width": 83.02,
+        "height": 42
+      },
+      "labelLines": [
+        "preserve original",
+        "question when",
+        "revisions occur"
+      ],
+      "labelAngle": 0,
+      "labelOwner": "cross-g",
+      "labelAnchor": {
+        "x": 2818.92,
+        "y": 134.6
+      },
+      "leader": [
+        {
+          "x": 2818.92,
+          "y": 134.6
+        },
+        {
+          "x": 2812.92,
+          "y": 134.6
+        }
+      ]
+    },
+    {
+      "id": "cross-h",
+      "source": "validation",
+      "target": "paper",
+      "label": "record acceptance decision",
+      "semanticClass": "secondary",
+      "points": [
+        {
+          "x": 1923.25,
+          "y": 1105
+        },
+        {
+          "x": 1911.25,
+          "y": 1105
+        },
+        {
+          "x": 1911.25,
+          "y": 1284.67
+        },
+        {
+          "x": 1071.75,
+          "y": 1284.67
+        }
+      ],
+      "arrowhead": [
+        {
+          "x": 1071.75,
+          "y": 1284.67
+        },
+        {
+          "x": 1078.75,
+          "y": 1287.67
+        },
+        {
+          "x": 1078.75,
+          "y": 1281.67
+        }
+      ],
+      "color": "#006A9E",
+      "labelBox": {
+        "x": 1823.8000000000002,
+        "y": 1290.67,
+        "width": 90.95,
+        "height": 30
+      },
+      "labelLines": [
+        "record acceptance",
+        "decision"
+      ],
+      "labelAngle": 0,
+      "labelOwner": "cross-h",
+      "labelAnchor": {
+        "x": 1869.275,
+        "y": 1284.67
+      },
+      "leader": [
+        {
+          "x": 1869.275,
+          "y": 1284.67
+        },
+        {
+          "x": 1869.275,
+          "y": 1290.67
+        }
+      ]
+    },
+    {
+      "id": "cross-i",
+      "source": "raw",
+      "target": "model",
+      "label": "audit raw sample traceability",
+      "style": "dashed",
+      "semanticClass": "optional",
+      "points": [
+        {
+          "x": 2389.08,
+          "y": 417.33
+        },
+        {
+          "x": 2377.08,
+          "y": 417.33
+        },
+        {
+          "x": 2377.08,
+          "y": 472
+        },
+        {
+          "x": 3078.25,
+          "y": 472
+        },
+        {
+          "x": 3078.25,
+          "y": 585
+        },
+        {
+          "x": 3078.25,
+          "y": 753
+        },
+        {
+          "x": 3078.25,
+          "y": 943.33
+        },
+        {
+          "x": 2677.25,
+          "y": 943.33
+        }
+      ],
+      "arrowhead": [
+        {
+          "x": 2677.25,
+          "y": 943.33
+        },
+        {
+          "x": 2684.25,
+          "y": 946.33
+        },
+        {
+          "x": 2684.25,
+          "y": 940.33
+        }
+      ],
+      "color": "#A64900",
+      "labelBox": {
+        "x": 2685.105,
+        "y": 478,
+        "width": 85.12,
+        "height": 30
+      },
+      "labelLines": [
+        "audit raw sample",
+        "traceability"
+      ],
+      "labelAngle": 0,
+      "labelOwner": "cross-i",
+      "labelAnchor": {
+        "x": 2727.665,
+        "y": 472
+      },
+      "leader": [
+        {
+          "x": 2727.665,
+          "y": 472
+        },
+        {
+          "x": 2727.665,
+          "y": 478
+        }
+      ]
+    },
+    {
+      "id": "cross-j",
+      "source": "protocol",
+      "target": "appendix",
+      "label": "supply parameter definitions",
+      "semanticClass": "secondary",
+      "points": [
+        {
+          "x": 799.42,
+          "y": 460
+        },
+        {
+          "x": 799.42,
+          "y": 472
+        },
+        {
+          "x": 39,
+          "y": 472
+        },
+        {
+          "x": 39,
+          "y": 585
+        },
+        {
+          "x": 39,
+          "y": 753
+        },
+        {
+          "x": 39,
+          "y": 929
+        },
+        {
+          "x": 39,
+          "y": 984
+        },
+        {
+          "x": 828.42,
+          "y": 984
+        },
+        {
+          "x": 828.42,
+          "y": 1067.33
+        }
+      ],
+      "arrowhead": [
+        {
+          "x": 828.42,
+          "y": 1067.33
+        },
+        {
+          "x": 831.42,
+          "y": 1060.33
+        },
+        {
+          "x": 825.42,
+          "y": 1060.33
+        }
+      ],
+      "color": "#A64900",
+      "labelBox": {
+        "x": 717.859,
+        "y": 478,
+        "width": 87.08,
+        "height": 30
+      },
+      "labelLines": [
+        "supply parameter",
+        "definitions"
+      ],
+      "labelAngle": 0,
+      "labelOwner": "cross-j",
+      "labelAnchor": {
+        "x": 761.399,
+        "y": 472
+      },
+      "leader": [
+        {
+          "x": 761.399,
+          "y": 472
+        },
+        {
+          "x": 761.399,
+          "y": 478
+        }
+      ]
+    },
+    {
+      "id": "cross-k",
+      "source": "clean",
+      "target": "figures",
+      "label": "report exclusion counts",
+      "semanticClass": "secondary",
+      "points": [
+        {
+          "x": 611.5,
+          "y": 796
+        },
+        {
+          "x": 611.5,
+          "y": 818
+        },
+        {
+          "x": 1749.58,
+          "y": 818
+        },
+        {
+          "x": 1749.58,
+          "y": 886
+        }
+      ],
+      "arrowhead": [
+        {
+          "x": 1749.58,
+          "y": 886
+        },
+        {
+          "x": 1752.58,
+          "y": 879
+        },
+        {
+          "x": 1746.58,
+          "y": 879
+        }
+      ],
+      "color": "#00745B",
+      "labelBox": {
+        "x": 969.583,
+        "y": 824,
+        "width": 80.49,
+        "height": 30
+      },
+      "labelLines": [
+        "report exclusion",
+        "counts"
+      ],
+      "labelAngle": 0,
+      "labelOwner": "cross-k",
+      "labelAnchor": {
+        "x": 1009.828,
+        "y": 818
+      },
+      "leader": [
+        {
+          "x": 1009.828,
+          "y": 818
+        },
+        {
+          "x": 1009.828,
+          "y": 824
+        }
+      ]
+    }
+  ],
+  "continuations": [
+    {
+      "incomingEdge": "approve",
+      "outgoingEdge": "register",
+      "throughNode": "protocol",
+      "entry": {
+        "x": 1002.92,
+        "y": 374
+      },
+      "exit": {
+        "x": 1002.92,
+        "y": 460
+      },
+      "points": [
+        {
+          "x": 1002.92,
+          "y": 374
+        },
+        {
+          "x": 1002.92,
+          "y": 460
+        }
+      ],
+      "color": "#006A9E",
+      "style": "dotted",
+      "lane": {
+        "x": 998.92,
+        "y": 378.625,
+        "width": 8,
+        "height": 76.75
+      },
+      "textBounds": [
+        {
+          "x": 639.916666666667,
+          "y": 386,
+          "width": 323,
+          "height": 17
+        },
+        {
+          "x": 655.916666666667,
+          "y": 416,
+          "width": 134.35,
+          "height": 14
+        },
+        {
+          "x": 655.916666666667,
+          "y": 432,
+          "width": 150.12,
+          "height": 14
+        }
+      ],
+      "clearance": 4
+    },
+    {
+      "incomingEdge": "revise-protocol",
+      "outgoingEdge": "register",
+      "throughNode": "protocol",
+      "entry": {
+        "x": 993.92,
+        "y": 374
+      },
+      "exit": {
+        "x": 1002.92,
+        "y": 460
+      },
+      "points": [
+        {
+          "x": 993.92,
+          "y": 374
+        },
+        {
+          "x": 993.92,
+          "y": 449.375
+        },
+        {
+          "x": 1002.92,
+          "y": 449.375
+        },
+        {
+          "x": 1002.92,
+          "y": 460
+        }
+      ],
+      "color": "#006A9E",
+      "style": "dotted",
+      "lane": {
+        "x": 989.92,
+        "y": 378.625,
+        "width": 17,
+        "height": 76.75
+      },
+      "textBounds": [
+        {
+          "x": 639.916666666667,
+          "y": 386,
+          "width": 323,
+          "height": 17
+        },
+        {
+          "x": 655.916666666667,
+          "y": 416,
+          "width": 134.35,
+          "height": 14
+        },
+        {
+          "x": 655.916666666667,
+          "y": 432,
+          "width": 150.12,
+          "height": 14
+        }
+      ],
+      "clearance": 4
+    }
+  ],
+  "legend": {
+    "roles": [
+      {
+        "role": "input",
+        "label": "Input",
+        "cue": "required inputs use an asterisk"
+      },
+      {
+        "role": "shown",
+        "label": "Shown",
+        "cue": "visible state"
+      },
+      {
+        "role": "condition",
+        "label": "Condition",
+        "cue": "When/then predicate"
+      },
+      {
+        "role": "cta",
+        "label": "Action",
+        "cue": "bracketed; disabled is named"
+      },
+      {
+        "role": "rule",
+        "label": "Rule",
+        "cue": "behavioral invariant"
+      },
+      {
+        "role": "note",
+        "label": "Note",
+        "cue": "supporting information"
+      },
+      {
+        "role": "warning",
+        "label": "Warning",
+        "cue": "warning text plus color"
+      },
+      {
+        "role": "defined",
+        "label": "Defined term",
+        "cue": "term label"
+      }
+    ],
+    "nodeKinds": [
+      "screen",
+      "dialog",
+      "boundary",
+      "external",
+      "reference",
+      "showcase"
+    ],
+    "edgeStyles": [
+      {
+        "id": "solid",
+        "label": "declared transition",
+        "style": "solid"
+      },
+      {
+        "id": "dashed",
+        "label": "automatic or optional transition",
+        "style": "dashed"
+      },
+      {
+        "id": "dotted",
+        "label": "through-node continuation",
+        "style": "dotted"
+      }
+    ]
+  },
+  "provenance": {
+    "engine": "elkjs 0.12.0",
+    "candidate": 3,
+    "profile": "fit-page-candidate-search"
+  },
+  "print": {
+    "target": {
+      "width": 3000,
+      "height": 1500,
+      "margin": 24,
+      "minBodyFontSize": 9,
+      "orientation": "landscape",
+      "minStrokeWidth": 0.5
+    },
+    "transform": {
+      "width": 3000,
+      "height": 1500,
+      "translateX": 24,
+      "translateY": 24,
+      "scale": 0.9491198456715698
+    },
+    "fitScale": 0.9491198456715698,
+    "effectiveBodyFontSize": 9.491198456715699,
+    "effectiveLabelFontSize": 9.491198456715699,
+    "effectiveMinStrokeWidth": 0.6169278996865204,
+    "minimumPage": {
+      "width": 2847.225,
+      "height": 1370.1000000000001
+    },
+    "nodeCount": 19,
+    "edgeCount": 36,
+    "labelCount": 36,
+    "constraints": [
+      "layout direction DOWN",
+      "compact spacing profile",
+      "body and labels at 10 pt; meaningful connector/annotation strokes include edge, continuation, node border, and label tether"
+    ],
+    "collisions": 0,
+    "sharedSegments": 0,
+    "crossings": 50
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "name": "@barzan/cleararcs",
+  "version": "0.1.0-beta.1",
+  "description": "Deterministic, validated ELK diagrams from semantic JSON",
+  "private": false,
+  "type": "module",
+  "main": "./dist/src/index.js",
+  "types": "./dist/src/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/src/index.d.ts",
+      "import": "./dist/src/index.js"
+    }
+  },
+  "bin": {
+    "cleararcs": "./dist/src/cli.js"
+  },
+  "files": [
+    "dist/src",
+    "assets/IBMPlexSans.ttf",
+    "assets/OFL.txt",
+    "README.md",
+    "docs/API.md",
+    "docs/USAGE.md",
+    "docs/TESTING.md",
+    "docs/CONTRACT.md",
+    "docs/THIRD_PARTY_NOTICES.md",
+    "examples/basic-routing.json",
+    "examples/basic-routing-output",
+    "examples/continuation.json",
+    "examples/continuation-output",
+    "examples/paper-architecture.json",
+    "examples/paper-architecture-output",
+    "examples/complex-workflow.json",
+    "examples/complex-workflow-output",
+    "examples/cleararcs-example.tex",
+    "schema",
+    "CONTRIBUTING.md",
+    "SECURITY.md"
+  ],
+  "repository": {"type": "git", "url": "git+https://github.com/barzan/cleararcs.git"},
+  "homepage": "https://github.com/barzan/cleararcs#readme",
+  "bugs": {"url": "https://github.com/barzan/cleararcs/issues"},
+  "keywords": ["diagram", "graph-layout", "elk", "svg", "pdf", "latex", "workflow", "orthogonal-routing"],
+  "engines": {
+    "node": ">=22 <23"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "check": "npm run build && node --test dist/test/*.test.js",
+    "verify:release": "npm run check && node scripts/verify-release.mjs",
+    "example": "node dist/src/cli.js render examples/basic-routing.json --out /tmp/cleararcs-example",
+    "prepare": "npm run build"
+  },
+  "dependencies": {
+    "elkjs": "0.12.0",
+    "fontkit": "2.0.4",
+    "pdfkit": "0.20.2"
+  },
+  "devDependencies": {
+    "@types/node": "26.6.2",
+    "@types/pdfkit": "0.17.5",
+    "typescript": "7.0.2"
+  }
+}

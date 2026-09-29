@@ -1,0 +1,599 @@
+{
+  "version": 1,
+  "source": {
+    "version": 1,
+    "direction": "LR",
+    "nodes": [
+      {
+        "id": "brief",
+        "title": "Research brief",
+        "body": "Question and scope"
+      },
+      {
+        "id": "methods",
+        "title": "Method design",
+        "body": "Choose measurement plan"
+      },
+      {
+        "id": "data",
+        "title": "Data preparation",
+        "body": "Normalize observations"
+      },
+      {
+        "id": "review",
+        "title": "Technical review",
+        "body": "Join evidence and method"
+      },
+      {
+        "id": "paper",
+        "title": "Paper draft",
+        "body": "Prepare figures and claims"
+      }
+    ],
+    "edges": [
+      {
+        "id": "plan-method",
+        "source": "brief",
+        "target": "methods",
+        "label": "design method"
+      },
+      {
+        "id": "plan-data",
+        "source": "brief",
+        "target": "data",
+        "label": "prepare data"
+      },
+      {
+        "id": "method-review",
+        "source": "methods",
+        "target": "review",
+        "label": "submit method"
+      },
+      {
+        "id": "data-review",
+        "source": "data",
+        "target": "review",
+        "label": "submit dataset"
+      },
+      {
+        "id": "review-paper",
+        "source": "review",
+        "target": "paper",
+        "label": "approve draft"
+      }
+    ]
+  },
+  "canvas": {
+    "x": 0,
+    "y": 0,
+    "width": 2321.1200000000003,
+    "height": 215
+  },
+  "nodes": [
+    {
+      "id": "brief",
+      "title": "Research brief",
+      "body": "Question and scope",
+      "canonicalNodeId": "brief",
+      "displayTitle": "Research brief",
+      "box": {
+        "x": 30,
+        "y": 37,
+        "width": 112.61000000000001,
+        "height": 42
+      }
+    },
+    {
+      "id": "methods",
+      "title": "Method design",
+      "body": "Choose measurement plan",
+      "canonicalNodeId": "methods",
+      "displayTitle": "Method design",
+      "box": {
+        "x": 717.4000000000001,
+        "y": 142,
+        "width": 144.34,
+        "height": 42
+      }
+    },
+    {
+      "id": "data",
+      "title": "Data preparation",
+      "body": "Normalize observations",
+      "canonicalNodeId": "data",
+      "displayTitle": "Data preparation",
+      "box": {
+        "x": 724.6300000000001,
+        "y": 30,
+        "width": 129.88,
+        "height": 42
+      }
+    },
+    {
+      "id": "review",
+      "title": "Technical review",
+      "body": "Join evidence and method",
+      "canonicalNodeId": "review",
+      "displayTitle": "Technical review",
+      "box": {
+        "x": 1438.0000000000002,
+        "y": 37,
+        "width": 141.85,
+        "height": 42
+      }
+    },
+    {
+      "id": "paper",
+      "title": "Paper draft",
+      "body": "Prepare figures and claims",
+      "canonicalNodeId": "paper",
+      "displayTitle": "Paper draft",
+      "box": {
+        "x": 2148.1400000000003,
+        "y": 37,
+        "width": 142.98,
+        "height": 42
+      }
+    }
+  ],
+  "ports": [
+    {
+      "id": "plan-method:source",
+      "nodeId": "brief",
+      "side": "EAST",
+      "point": {
+        "x": 142.61,
+        "y": 65
+      }
+    },
+    {
+      "id": "plan-data:source",
+      "nodeId": "brief",
+      "side": "EAST",
+      "point": {
+        "x": 142.61,
+        "y": 51
+      }
+    },
+    {
+      "id": "plan-method:target",
+      "nodeId": "methods",
+      "side": "WEST",
+      "point": {
+        "x": 717.4,
+        "y": 163
+      }
+    },
+    {
+      "id": "method-review:source",
+      "nodeId": "methods",
+      "side": "EAST",
+      "point": {
+        "x": 861.74,
+        "y": 163
+      }
+    },
+    {
+      "id": "plan-data:target",
+      "nodeId": "data",
+      "side": "WEST",
+      "point": {
+        "x": 724.63,
+        "y": 51
+      }
+    },
+    {
+      "id": "data-review:source",
+      "nodeId": "data",
+      "side": "EAST",
+      "point": {
+        "x": 854.51,
+        "y": 51
+      }
+    },
+    {
+      "id": "method-review:target",
+      "nodeId": "review",
+      "side": "WEST",
+      "point": {
+        "x": 1438,
+        "y": 65
+      }
+    },
+    {
+      "id": "data-review:target",
+      "nodeId": "review",
+      "side": "WEST",
+      "point": {
+        "x": 1438,
+        "y": 51
+      }
+    },
+    {
+      "id": "review-paper:source",
+      "nodeId": "review",
+      "side": "EAST",
+      "point": {
+        "x": 1579.85,
+        "y": 58
+      }
+    },
+    {
+      "id": "review-paper:target",
+      "nodeId": "paper",
+      "side": "WEST",
+      "point": {
+        "x": 2148.14,
+        "y": 58
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "plan-method",
+      "source": "brief",
+      "target": "methods",
+      "label": "design method",
+      "points": [
+        {
+          "x": 142.61,
+          "y": 65
+        },
+        {
+          "x": 170.61,
+          "y": 65
+        },
+        {
+          "x": 170.61,
+          "y": 163
+        },
+        {
+          "x": 717.4,
+          "y": 163
+        }
+      ],
+      "arrowhead": [
+        {
+          "x": 717.4,
+          "y": 163
+        },
+        {
+          "x": 710.4,
+          "y": 160
+        },
+        {
+          "x": 710.4,
+          "y": 166
+        }
+      ],
+      "labelBox": {
+        "x": 160.5545,
+        "y": 169,
+        "width": 74.79,
+        "height": 18
+      },
+      "labelLines": [
+        "design method"
+      ],
+      "labelAngle": 0,
+      "labelOwner": "plan-method",
+      "labelAnchor": {
+        "x": 197.9495,
+        "y": 163
+      },
+      "leader": [
+        {
+          "x": 197.9495,
+          "y": 163
+        },
+        {
+          "x": 197.9495,
+          "y": 169
+        }
+      ]
+    },
+    {
+      "id": "plan-data",
+      "source": "brief",
+      "target": "data",
+      "label": "prepare data",
+      "points": [
+        {
+          "x": 142.61,
+          "y": 51
+        },
+        {
+          "x": 724.63,
+          "y": 51
+        }
+      ],
+      "arrowhead": [
+        {
+          "x": 724.63,
+          "y": 51
+        },
+        {
+          "x": 717.63,
+          "y": 48
+        },
+        {
+          "x": 717.63,
+          "y": 54
+        }
+      ],
+      "labelBox": {
+        "x": 168.05700000000002,
+        "y": 27,
+        "width": 65.51,
+        "height": 18
+      },
+      "labelLines": [
+        "prepare data"
+      ],
+      "labelAngle": 0,
+      "labelOwner": "plan-data",
+      "labelAnchor": {
+        "x": 200.812,
+        "y": 51
+      },
+      "leader": [
+        {
+          "x": 200.812,
+          "y": 51
+        },
+        {
+          "x": 200.812,
+          "y": 45
+        }
+      ]
+    },
+    {
+      "id": "method-review",
+      "source": "methods",
+      "target": "review",
+      "label": "submit method",
+      "points": [
+        {
+          "x": 861.74,
+          "y": 163
+        },
+        {
+          "x": 1216,
+          "y": 163
+        },
+        {
+          "x": 1216,
+          "y": 65
+        },
+        {
+          "x": 1438,
+          "y": 65
+        }
+      ],
+      "arrowhead": [
+        {
+          "x": 1438,
+          "y": 65
+        },
+        {
+          "x": 1431,
+          "y": 62
+        },
+        {
+          "x": 1431,
+          "y": 68
+        }
+      ],
+      "labelBox": {
+        "x": 876.749,
+        "y": 139,
+        "width": 76.25999999999999,
+        "height": 18
+      },
+      "labelLines": [
+        "submit method"
+      ],
+      "labelAngle": 0,
+      "labelOwner": "method-review",
+      "labelAnchor": {
+        "x": 914.879,
+        "y": 163
+      },
+      "leader": [
+        {
+          "x": 914.879,
+          "y": 163
+        },
+        {
+          "x": 914.879,
+          "y": 157
+        }
+      ]
+    },
+    {
+      "id": "data-review",
+      "source": "data",
+      "target": "review",
+      "label": "submit dataset",
+      "points": [
+        {
+          "x": 854.51,
+          "y": 51
+        },
+        {
+          "x": 1438,
+          "y": 51
+        }
+      ],
+      "arrowhead": [
+        {
+          "x": 1438,
+          "y": 51
+        },
+        {
+          "x": 1431,
+          "y": 48
+        },
+        {
+          "x": 1431,
+          "y": 54
+        }
+      ],
+      "labelBox": {
+        "x": 875.2040000000001,
+        "y": 27,
+        "width": 75.31,
+        "height": 18
+      },
+      "labelLines": [
+        "submit dataset"
+      ],
+      "labelAngle": 0,
+      "labelOwner": "data-review",
+      "labelAnchor": {
+        "x": 912.859,
+        "y": 51
+      },
+      "leader": [
+        {
+          "x": 912.859,
+          "y": 51
+        },
+        {
+          "x": 912.859,
+          "y": 45
+        }
+      ]
+    },
+    {
+      "id": "review-paper",
+      "source": "review",
+      "target": "paper",
+      "label": "approve draft",
+      "points": [
+        {
+          "x": 1579.85,
+          "y": 58
+        },
+        {
+          "x": 2148.14,
+          "y": 58
+        }
+      ],
+      "arrowhead": [
+        {
+          "x": 2148.14,
+          "y": 58
+        },
+        {
+          "x": 2141.14,
+          "y": 55
+        },
+        {
+          "x": 2141.14,
+          "y": 61
+        }
+      ],
+      "labelBox": {
+        "x": 1602.5339999999999,
+        "y": 34,
+        "width": 68.28999999999999,
+        "height": 18
+      },
+      "labelLines": [
+        "approve draft"
+      ],
+      "labelAngle": 0,
+      "labelOwner": "review-paper",
+      "labelAnchor": {
+        "x": 1636.6789999999999,
+        "y": 58
+      },
+      "leader": [
+        {
+          "x": 1636.6789999999999,
+          "y": 58
+        },
+        {
+          "x": 1636.6789999999999,
+          "y": 52
+        }
+      ]
+    }
+  ],
+  "continuations": [],
+  "legend": {
+    "roles": [
+      {
+        "role": "input",
+        "label": "Input",
+        "cue": "required inputs use an asterisk"
+      },
+      {
+        "role": "shown",
+        "label": "Shown",
+        "cue": "visible state"
+      },
+      {
+        "role": "condition",
+        "label": "Condition",
+        "cue": "When/then predicate"
+      },
+      {
+        "role": "cta",
+        "label": "Action",
+        "cue": "bracketed; disabled is named"
+      },
+      {
+        "role": "rule",
+        "label": "Rule",
+        "cue": "behavioral invariant"
+      },
+      {
+        "role": "note",
+        "label": "Note",
+        "cue": "supporting information"
+      },
+      {
+        "role": "warning",
+        "label": "Warning",
+        "cue": "warning text plus color"
+      },
+      {
+        "role": "defined",
+        "label": "Defined term",
+        "cue": "term label"
+      }
+    ],
+    "nodeKinds": [
+      "screen",
+      "dialog",
+      "boundary",
+      "external",
+      "reference",
+      "showcase"
+    ],
+    "edgeStyles": [
+      {
+        "id": "solid",
+        "label": "declared transition",
+        "style": "solid"
+      },
+      {
+        "id": "dashed",
+        "label": "automatic or optional transition",
+        "style": "dashed"
+      },
+      {
+        "id": "dotted",
+        "label": "through-node continuation",
+        "style": "dotted"
+      }
+    ]
+  },
+  "provenance": {
+    "engine": "elkjs 0.12.0",
+    "candidate": 0,
+    "profile": "quality"
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/barzan/cleararcs/blob/v0.1.0-beta.1/schema/diagram-v1.json",
+  "title": "ClearArcs v1 semantic input",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "nodes", "edges"],
+  "properties": {
+    "version": {"const": 1},
+    "capacity": {"const": "extended"},
+    "direction": {"enum": ["AUTO", "LR", "TB"]},
+    "layoutGoal": {"enum": ["quality", "fit-page"]},
+    "maxWidth": {"type": "number", "exclusiveMinimum": 0},
+    "maxHeight": {"type": "number", "exclusiveMinimum": 0},
+    "theme": {"$ref": "#/$defs/theme"},
+    "page": {"$ref": "#/$defs/page"},
+    "nodes": {"type": "array", "maxItems": 60, "items": {"$ref": "#/$defs/node"}},
+    "edges": {"type": "array", "maxItems": 120, "items": {"$ref": "#/$defs/edge"}},
+    "continuations": {"type": "array", "maxItems": 120, "items": {"$ref": "#/$defs/continuation"}}
+  },
+  "$defs": {
+    "side": {"enum": ["NORTH", "SOUTH", "EAST", "WEST"]},
+    "color": {"type": "string", "pattern": "^#(?:[0-9a-fA-F]{3}|[0-9a-fA-F]{6})$"},
+    "text": {"type": "string", "maxLength": 4096},
+    "theme": {"type": "object", "additionalProperties": false, "properties": {
+      "groupEdgesByAction": {"type": "boolean"}, "visual": {"type": "boolean"},
+      "labelWidth": {"type": "number", "exclusiveMinimum": 0}, "margin": {"type": "number", "minimum": 3},
+      "crossingBridges": {"type": "boolean"}, "colorMode": {"enum": ["semantic", "proximity"]},
+      "palette": {"type": "object", "additionalProperties": false, "properties": {"primary": {"$ref": "#/$defs/color"}, "secondary": {"$ref": "#/$defs/color"}, "alert": {"$ref": "#/$defs/color"}, "optional": {"$ref": "#/$defs/color"}}}
+    }},
+    "page": {"type": "object", "additionalProperties": false, "required": ["width", "height", "margin", "minBodyFontSize"], "properties": {
+      "width": {"type": "number", "exclusiveMinimum": 0}, "height": {"type": "number", "exclusiveMinimum": 0},
+      "margin": {"type": "number", "minimum": 0}, "minBodyFontSize": {"type": "number", "exclusiveMinimum": 0},
+      "orientation": {"enum": ["portrait", "landscape"]}, "minStrokeWidth": {"type": "number", "exclusiveMinimum": 0}
+    }},
+    "row": {"type": "object", "additionalProperties": false, "required": ["role"], "properties": {
+      "role": {"enum": ["input", "shown", "condition", "cta", "rule", "note", "warning", "defined"]},
+      "text": {"$ref": "#/$defs/text"}, "label": {"$ref": "#/$defs/text"}, "choice": {"$ref": "#/$defs/text"}, "predicate": {"$ref": "#/$defs/text"}, "then": {"$ref": "#/$defs/text"}, "icon": {"$ref": "#/$defs/text"},
+      "thenRole": {"enum": ["input", "shown", "cta", "note"]}, "required": {"type": "boolean"}, "enabled": {"type": "boolean"}, "emphasis": {"type": "boolean"}, "indent": {"type": "integer", "minimum": 0, "maximum": 4}
+    }},
+    "node": {"type": "object", "additionalProperties": false, "required": ["id", "title"], "properties": {
+      "id": {"$ref": "#/$defs/text", "minLength": 1}, "title": {"$ref": "#/$defs/text"}, "body": {"$ref": "#/$defs/text"}, "state": {"$ref": "#/$defs/text"},
+      "kind": {"enum": ["screen", "dialog", "boundary", "external", "other"]}, "presentation": {"enum": ["full", "reference"]}, "canonicalNodeId": {"$ref": "#/$defs/text", "minLength": 1}, "showcasePage": {"type": "integer", "minimum": 1},
+      "width": {"type": "number", "exclusiveMinimum": 0}, "strokeWidth": {"type": "number", "minimum": 0.5, "maximum": 8}, "sourceSide": {"$ref": "#/$defs/side"}, "targetSide": {"$ref": "#/$defs/side"},
+      "rows": {"type": "array", "maxItems": 200, "items": {"$ref": "#/$defs/row"}}
+    }},
+    "edge": {"type": "object", "additionalProperties": false, "required": ["id", "source", "target"], "properties": {
+      "id": {"$ref": "#/$defs/text", "minLength": 1}, "source": {"$ref": "#/$defs/text", "minLength": 1}, "target": {"$ref": "#/$defs/text", "minLength": 1}, "label": {"$ref": "#/$defs/text"}, "displayLabel": {"$ref": "#/$defs/text"},
+      "labelPlacement": {"enum": ["auto", "horizontal", "vertical", "aligned"]}, "semanticClass": {"enum": ["primary", "secondary", "alert", "optional"]}, "style": {"enum": ["solid", "dashed"]}, "sourceSide": {"$ref": "#/$defs/side"}, "targetSide": {"$ref": "#/$defs/side"},
+      "labelParts": {"type": "object", "additionalProperties": false, "required": ["action"], "properties": {"action": {"$ref": "#/$defs/text"}, "predicates": {"type": "array", "maxItems": 20, "items": {"$ref": "#/$defs/text"}}, "effect": {"$ref": "#/$defs/text"}}}
+    }},
+    "continuation": {"type": "object", "additionalProperties": false, "required": ["incomingEdge", "outgoingEdge", "throughNode"], "properties": {"incomingEdge": {"$ref": "#/$defs/text", "minLength": 1}, "outgoingEdge": {"$ref": "#/$defs/text", "minLength": 1}, "throughNode": {"$ref": "#/$defs/text", "minLength": 1}}}
+  }
+}

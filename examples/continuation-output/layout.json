@@ -1,0 +1,678 @@
+{
+  "version": 1,
+  "source": {
+    "version": 1,
+    "direction": "LR",
+    "theme": {
+      "visual": true,
+      "colorMode": "proximity",
+      "margin": 22
+    },
+    "nodes": [
+      {
+        "id": "A",
+        "title": "Acquire sample",
+        "rows": [
+          {
+            "role": "shown",
+            "text": "Incoming measurement batch"
+          }
+        ]
+      },
+      {
+        "id": "X",
+        "title": "Calibration note",
+        "rows": [
+          {
+            "role": "note",
+            "text": "Independent calibration context"
+          }
+        ]
+      },
+      {
+        "id": "B",
+        "title": "Quality screen",
+        "kind": "dialog",
+        "rows": [
+          {
+            "role": "shown",
+            "text": "Inspect signal stability"
+          },
+          {
+            "role": "rule",
+            "text": "Preserve the selected sample path"
+          },
+          {
+            "role": "cta",
+            "text": "Accept stable sample"
+          }
+        ]
+      },
+      {
+        "id": "C",
+        "title": "Analyze signal",
+        "rows": [
+          {
+            "role": "shown",
+            "text": "Estimate response curve"
+          }
+        ]
+      }
+    ],
+    "edges": [
+      {
+        "id": "sample",
+        "source": "A",
+        "target": "B",
+        "label": "selected sample"
+      },
+      {
+        "id": "calibration",
+        "source": "X",
+        "target": "B",
+        "label": "calibration context",
+        "semanticClass": "secondary"
+      },
+      {
+        "id": "analysis",
+        "source": "B",
+        "target": "C",
+        "label": "continue analysis"
+      }
+    ],
+    "continuations": [
+      {
+        "incomingEdge": "sample",
+        "outgoingEdge": "analysis",
+        "throughNode": "B"
+      }
+    ]
+  },
+  "canvas": {
+    "x": 0,
+    "y": 0,
+    "width": 2340.32,
+    "height": 278
+  },
+  "nodes": [
+    {
+      "id": "A",
+      "title": "Acquire sample",
+      "rows": [
+        {
+          "role": "shown",
+          "text": "Incoming measurement batch"
+        }
+      ],
+      "canonicalNodeId": "A",
+      "displayTitle": "Acquire sample",
+      "box": {
+        "x": 34,
+        "y": 174,
+        "width": 365,
+        "height": 70
+      },
+      "titleLines": [
+        "Acquire sample"
+      ],
+      "titleBounds": {
+        "x": 48,
+        "y": 186,
+        "width": 323,
+        "height": 17
+      },
+      "resolvedRows": [
+        {
+          "role": "shown",
+          "text": "Incoming measurement batch",
+          "renderedText": "Incoming measurement batch",
+          "lines": [
+            "Incoming measurement batch"
+          ],
+          "bounds": {
+            "x": 64,
+            "y": 216,
+            "width": 135.10999999999999,
+            "height": 14
+          }
+        }
+      ]
+    },
+    {
+      "id": "X",
+      "title": "Calibration note",
+      "rows": [
+        {
+          "role": "note",
+          "text": "Independent calibration context"
+        }
+      ],
+      "canonicalNodeId": "X",
+      "displayTitle": "Calibration note",
+      "box": {
+        "x": 34,
+        "y": 34,
+        "width": 365,
+        "height": 70
+      },
+      "titleLines": [
+        "Calibration note"
+      ],
+      "titleBounds": {
+        "x": 48,
+        "y": 46,
+        "width": 323,
+        "height": 17
+      },
+      "resolvedRows": [
+        {
+          "role": "note",
+          "text": "Independent calibration context",
+          "renderedText": "Independent calibration context",
+          "lines": [
+            "Independent calibration context"
+          ],
+          "bounds": {
+            "x": 64,
+            "y": 76,
+            "width": 144.46,
+            "height": 14
+          }
+        }
+      ]
+    },
+    {
+      "id": "B",
+      "title": "Quality screen",
+      "kind": "dialog",
+      "rows": [
+        {
+          "role": "shown",
+          "text": "Inspect signal stability"
+        },
+        {
+          "role": "rule",
+          "text": "Preserve the selected sample path"
+        },
+        {
+          "role": "cta",
+          "text": "Accept stable sample"
+        }
+      ],
+      "canonicalNodeId": "B",
+      "displayTitle": "Quality screen",
+      "box": {
+        "x": 990.6800000000001,
+        "y": 99,
+        "width": 365,
+        "height": 130
+      },
+      "titleLines": [
+        "Quality screen"
+      ],
+      "titleBounds": {
+        "x": 1004.6800000000001,
+        "y": 111,
+        "width": 323,
+        "height": 17
+      },
+      "resolvedRows": [
+        {
+          "role": "shown",
+          "text": "Inspect signal stability",
+          "renderedText": "Inspect signal stability",
+          "lines": [
+            "Inspect signal stability"
+          ],
+          "bounds": {
+            "x": 1020.6800000000001,
+            "y": 141,
+            "width": 101.16,
+            "height": 14
+          }
+        },
+        {
+          "role": "rule",
+          "text": "Preserve the selected sample path",
+          "renderedText": "Preserve the selected sample path",
+          "lines": [
+            "Preserve the selected sample path"
+          ],
+          "bounds": {
+            "x": 1020.6800000000001,
+            "y": 157,
+            "width": 155.29,
+            "height": 14
+          }
+        },
+        {
+          "role": "cta",
+          "text": "Accept stable sample",
+          "renderedText": "[Accept stable sample]",
+          "lines": [
+            "[Accept stable sample]"
+          ],
+          "bounds": {
+            "x": 1020.6800000000001,
+            "y": 173,
+            "width": 102.75999999999999,
+            "height": 14
+          }
+        }
+      ]
+    },
+    {
+      "id": "C",
+      "title": "Analyze signal",
+      "rows": [
+        {
+          "role": "shown",
+          "text": "Estimate response curve"
+        }
+      ],
+      "canonicalNodeId": "C",
+      "displayTitle": "Analyze signal",
+      "box": {
+        "x": 1941.3200000000002,
+        "y": 174,
+        "width": 365,
+        "height": 70
+      },
+      "titleLines": [
+        "Analyze signal"
+      ],
+      "titleBounds": {
+        "x": 1955.3200000000002,
+        "y": 186,
+        "width": 323,
+        "height": 17
+      },
+      "resolvedRows": [
+        {
+          "role": "shown",
+          "text": "Estimate response curve",
+          "renderedText": "Estimate response curve",
+          "lines": [
+            "Estimate response curve"
+          ],
+          "bounds": {
+            "x": 1971.3200000000002,
+            "y": 216,
+            "width": 110.61999999999999,
+            "height": 14
+          }
+        }
+      ]
+    }
+  ],
+  "ports": [
+    {
+      "id": "sample:source",
+      "nodeId": "A",
+      "side": "EAST",
+      "point": {
+        "x": 399,
+        "y": 209
+      }
+    },
+    {
+      "id": "calibration:source",
+      "nodeId": "X",
+      "side": "EAST",
+      "point": {
+        "x": 399,
+        "y": 69
+      }
+    },
+    {
+      "id": "sample:target",
+      "nodeId": "B",
+      "side": "WEST",
+      "point": {
+        "x": 990.68,
+        "y": 209
+      }
+    },
+    {
+      "id": "calibration:target",
+      "nodeId": "B",
+      "side": "WEST",
+      "point": {
+        "x": 990.68,
+        "y": 150
+      }
+    },
+    {
+      "id": "analysis:source",
+      "nodeId": "B",
+      "side": "EAST",
+      "point": {
+        "x": 1355.68,
+        "y": 209
+      }
+    },
+    {
+      "id": "analysis:target",
+      "nodeId": "C",
+      "side": "WEST",
+      "point": {
+        "x": 1941.32,
+        "y": 209
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "sample",
+      "source": "A",
+      "target": "B",
+      "label": "selected sample",
+      "points": [
+        {
+          "x": 399,
+          "y": 209
+        },
+        {
+          "x": 990.68,
+          "y": 209
+        }
+      ],
+      "arrowhead": [
+        {
+          "x": 990.68,
+          "y": 209
+        },
+        {
+          "x": 983.68,
+          "y": 206
+        },
+        {
+          "x": 983.68,
+          "y": 212
+        }
+      ],
+      "color": "#A64900",
+      "continuedAtTarget": true,
+      "labelBox": {
+        "x": 417.333,
+        "y": 185,
+        "width": 81.67,
+        "height": 18
+      },
+      "labelLines": [
+        "selected sample"
+      ],
+      "labelAngle": 0,
+      "labelOwner": "sample",
+      "labelAnchor": {
+        "x": 458.168,
+        "y": 209
+      },
+      "leader": [
+        {
+          "x": 458.168,
+          "y": 209
+        },
+        {
+          "x": 458.168,
+          "y": 203
+        }
+      ]
+    },
+    {
+      "id": "calibration",
+      "source": "X",
+      "target": "B",
+      "label": "calibration context",
+      "semanticClass": "secondary",
+      "points": [
+        {
+          "x": 399,
+          "y": 69
+        },
+        {
+          "x": 768.68,
+          "y": 69
+        },
+        {
+          "x": 768.68,
+          "y": 150
+        },
+        {
+          "x": 990.68,
+          "y": 150
+        }
+      ],
+      "arrowhead": [
+        {
+          "x": 990.68,
+          "y": 150
+        },
+        {
+          "x": 983.68,
+          "y": 147
+        },
+        {
+          "x": 983.68,
+          "y": 153
+        }
+      ],
+      "color": "#006A9E",
+      "labelBox": {
+        "x": 408.61199999999997,
+        "y": 45,
+        "width": 91.68,
+        "height": 18
+      },
+      "labelLines": [
+        "calibration context"
+      ],
+      "labelAngle": 0,
+      "labelOwner": "calibration",
+      "labelAnchor": {
+        "x": 454.452,
+        "y": 69
+      },
+      "leader": [
+        {
+          "x": 454.452,
+          "y": 69
+        },
+        {
+          "x": 454.452,
+          "y": 63
+        }
+      ]
+    },
+    {
+      "id": "analysis",
+      "source": "B",
+      "target": "C",
+      "label": "continue analysis",
+      "points": [
+        {
+          "x": 1355.68,
+          "y": 209
+        },
+        {
+          "x": 1941.32,
+          "y": 209
+        }
+      ],
+      "arrowhead": [
+        {
+          "x": 1941.32,
+          "y": 209
+        },
+        {
+          "x": 1934.32,
+          "y": 206
+        },
+        {
+          "x": 1934.32,
+          "y": 212
+        }
+      ],
+      "color": "#A64900",
+      "labelBox": {
+        "x": 1371.4240000000002,
+        "y": 185,
+        "width": 85.64,
+        "height": 18
+      },
+      "labelLines": [
+        "continue analysis"
+      ],
+      "labelAngle": 0,
+      "labelOwner": "analysis",
+      "labelAnchor": {
+        "x": 1414.2440000000001,
+        "y": 209
+      },
+      "leader": [
+        {
+          "x": 1414.2440000000001,
+          "y": 209
+        },
+        {
+          "x": 1414.2440000000001,
+          "y": 203
+        }
+      ]
+    }
+  ],
+  "continuations": [
+    {
+      "incomingEdge": "sample",
+      "outgoingEdge": "analysis",
+      "throughNode": "B",
+      "entry": {
+        "x": 990.68,
+        "y": 209
+      },
+      "exit": {
+        "x": 1355.68,
+        "y": 209
+      },
+      "points": [
+        {
+          "x": 990.68,
+          "y": 209
+        },
+        {
+          "x": 1355.68,
+          "y": 209
+        }
+      ],
+      "color": "#A64900",
+      "style": "dotted",
+      "lane": {
+        "x": 995.3050000000001,
+        "y": 205,
+        "width": 355.75,
+        "height": 8
+      },
+      "textBounds": [
+        {
+          "x": 1004.6800000000001,
+          "y": 111,
+          "width": 323,
+          "height": 17
+        },
+        {
+          "x": 1020.6800000000001,
+          "y": 141,
+          "width": 101.16,
+          "height": 14
+        },
+        {
+          "x": 1020.6800000000001,
+          "y": 157,
+          "width": 155.29,
+          "height": 14
+        },
+        {
+          "x": 1020.6800000000001,
+          "y": 173,
+          "width": 102.75999999999999,
+          "height": 14
+        }
+      ],
+      "clearance": 4
+    }
+  ],
+  "legend": {
+    "roles": [
+      {
+        "role": "input",
+        "label": "Input",
+        "cue": "required inputs use an asterisk"
+      },
+      {
+        "role": "shown",
+        "label": "Shown",
+        "cue": "visible state"
+      },
+      {
+        "role": "condition",
+        "label": "Condition",
+        "cue": "When/then predicate"
+      },
+      {
+        "role": "cta",
+        "label": "Action",
+        "cue": "bracketed; disabled is named"
+      },
+      {
+        "role": "rule",
+        "label": "Rule",
+        "cue": "behavioral invariant"
+      },
+      {
+        "role": "note",
+        "label": "Note",
+        "cue": "supporting information"
+      },
+      {
+        "role": "warning",
+        "label": "Warning",
+        "cue": "warning text plus color"
+      },
+      {
+        "role": "defined",
+        "label": "Defined term",
+        "cue": "term label"
+      }
+    ],
+    "nodeKinds": [
+      "screen",
+      "dialog",
+      "boundary",
+      "external",
+      "reference",
+      "showcase"
+    ],
+    "edgeStyles": [
+      {
+        "id": "solid",
+        "label": "declared transition",
+        "style": "solid"
+      },
+      {
+        "id": "dashed",
+        "label": "automatic or optional transition",
+        "style": "dashed"
+      },
+      {
+        "id": "dotted",
+        "label": "through-node continuation",
+        "style": "dotted"
+      }
+    ]
+  },
+  "provenance": {
+    "engine": "elkjs 0.12.0",
+    "candidate": 0,
+    "profile": "quality"
+  }
+}

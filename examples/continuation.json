@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "direction": "LR",
+  "theme": {"visual":true,"colorMode":"proximity","margin":22},
+  "nodes": [
+    {"id":"A","title":"Acquire sample","rows":[{"role":"shown","text":"Incoming measurement batch"}]},
+    {"id":"X","title":"Calibration note","rows":[{"role":"note","text":"Independent calibration context"}]},
+    {"id":"B","title":"Quality screen","kind":"dialog","rows":[{"role":"shown","text":"Inspect signal stability"},{"role":"rule","text":"Preserve the selected sample path"},{"role":"cta","text":"Accept stable sample"}]},
+    {"id":"C","title":"Analyze signal","rows":[{"role":"shown","text":"Estimate response curve"}]}
+  ],
+  "edges": [
+    {"id":"sample","source":"A","target":"B","label":"selected sample"},
+    {"id":"calibration","source":"X","target":"B","label":"calibration context","semanticClass":"secondary"},
+    {"id":"analysis","source":"B","target":"C","label":"continue analysis"}
+  ],
+  "continuations": [{"incomingEdge":"sample","outgoingEdge":"analysis","throughNode":"B"}]
+}

@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "direction": "AUTO",
+  "layoutGoal": "fit-page",
+  "page": {"width":1000,"height":800,"margin":30,"minBodyFontSize":9,"orientation":"landscape","minStrokeWidth":0.5},
+  "theme": {"visual":true,"crossingBridges":true,"colorMode":"semantic"},
+  "nodes": [
+    {"id":"instrument","title":"Field instrument","kind":"external","rows":[{"role":"shown","text":"Collect calibrated spectra"}]},
+    {"id":"ingest","title":"Ingestion service","kind":"screen","rows":[{"role":"input","required":true,"label":"Capture batch"},{"role":"shown","text":"Validate timestamps"}]},
+    {"id":"archive","title":"Reference archive","kind":"boundary","rows":[{"role":"shown","text":"Versioned raw observations"}]},
+    {"id":"features","title":"Feature laboratory","kind":"screen","rows":[{"role":"condition","predicate":"Calibration passes","then":"Extract descriptors","thenRole":"cta"},{"role":"rule","text":"Retain feature provenance"}]},
+    {"id":"model","title":"Inference model","kind":"dialog","rows":[{"role":"shown","text":"Fit constrained response model"},{"role":"cta","text":"Estimate parameters"}]},
+    {"id":"figures","title":"Figure compiler","kind":"screen","rows":[{"role":"shown","text":"Compose paper-ready panels"}]},
+    {"id":"paper","title":"Manuscript package","kind":"boundary","rows":[{"role":"shown","text":"Methods, figures, and appendix"}]}
+  ],
+  "edges": [
+    {"id":"capture","source":"instrument","target":"ingest","label":"calibrated spectra","semanticClass":"primary"},
+    {"id":"preserve","source":"ingest","target":"archive","label":"raw observation record","semanticClass":"secondary"},
+    {"id":"transform","source":"ingest","target":"features","label":"normalized signal","semanticClass":"primary"},
+    {"id":"retrieve","source":"archive","target":"features","label":"reference baseline","style":"dashed","semanticClass":"optional"},
+    {"id":"estimate","source":"features","target":"model","label":"descriptor matrix","semanticClass":"primary"},
+    {"id":"plot","source":"model","target":"figures","label":"parameter estimates","semanticClass":"alert"},
+    {"id":"assemble","source":"figures","target":"paper","label":"verified figure set","semanticClass":"primary"},
+    {"id":"diagnose","source":"model","target":"features","label":"residual diagnostics","style":"dashed","semanticClass":"optional"}
+  ]
+}
