@@ -3,6 +3,7 @@
   "version": "0.1.0-beta.1",
   "description": "Deterministic, validated ELK diagrams from semantic JSON",
   "private": false,
+  "license": "MIT",
   "type": "module",
   "main": "./dist/src/index.js",
   "types": "./dist/src/index.d.ts",
